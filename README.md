@@ -1,5 +1,5 @@
  <p align="center">
- <img src='/src/assets/illustration.png' width='370'>
+ <img src='/readme/illustration.png' width='370'>
  </p>
 
 ## A project to view coronavirus trends in Canada
