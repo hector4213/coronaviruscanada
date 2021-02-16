@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import covidService from './api/covid';
 import Header from './components/Header';
@@ -10,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchApi = async () => {
-      const apiData = await covidService.getData();
+      const apiData = await covidService.getSummaries();
       setData(apiData);
       setIsLoading(false);
     };
@@ -24,8 +25,10 @@ const App = () => {
 
   return (
     <div>
-      <Header />
-      <Provinces provinceData={data} />
+      <Router>
+        <Header />
+        <Provinces provinceData={data} />
+      </Router>
     </div>
   );
 };
