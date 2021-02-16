@@ -1,4 +1,3 @@
-import React from 'react';
 import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
@@ -9,15 +8,15 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             <div className=" flex items-center">
               <a className="flex-shrink-0" href="/">
-                <img className="h-8 w-8" src={Logo} alt="Workflow" />
+                <img className="h-12 w-12" src={Logo} alt="headericon" />
               </a>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
                     className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/#"
+                    href="/"
                   >
-                    Todays statistics
+                    Today
                   </a>
                   <a
                     className="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
@@ -52,7 +51,7 @@ const Header = () => {
                     />
                   </div>
                   <button
-                    className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
+                    className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-green-500 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
                     type="submit"
                   >
                     Search
