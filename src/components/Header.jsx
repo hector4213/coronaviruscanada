@@ -13,13 +13,13 @@ const Header = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/"
+                    className="text-gray-800  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    href="/#"
                   >
                     Today
                   </a>
                   <a
-                    className="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    className="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                     href="/#"
                   >
                     Trends
@@ -47,7 +47,7 @@ const Header = () => {
                       type="text"
                       id='"form-subscribe-Search'
                       className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      placeholder="components"
+                      placeholder="search"
                     />
                   </div>
                   <button
@@ -82,22 +82,22 @@ const Header = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a
+              className="text-gray-800 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+              href="/#"
+            >
+              Today
+            </a>
+            <a
+              className="text-gray-300 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
+              href="/#"
+            >
+              Trends
+            </a>
+            <a
               className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               href="/#"
             >
-              Home
-            </a>
-            <a
-              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Gallery
-            </a>
-            <a
-              className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
-            >
-              Content
+              Get Vaccinated
             </a>
             <a
               className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
