@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const ProvinceCard = ({ name, logo, province }) => {
+const ProvinceCard = ({ name, logo, province, path }) => {
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
-      <a href="/home" className="w-full block h-full">
+      <Link to={path} className="w-full block h-full">
         <img
           alt="province"
           src={logo}
@@ -28,7 +29,7 @@ const ProvinceCard = ({ name, logo, province }) => {
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 };
@@ -37,6 +38,7 @@ ProvinceCard.propTypes = {
   name: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   province: PropTypes.instanceOf(Object).isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default ProvinceCard;
