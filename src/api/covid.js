@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const getData = async () => {
   const response = await axios.get('https://api.opencovid.ca/summary');
-  return response.data;
+  const { summary } = response.data;
+  return summary;
 };
 
 export default {
