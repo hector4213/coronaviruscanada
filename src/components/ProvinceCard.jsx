@@ -18,13 +18,13 @@ const ProvinceCard = ({ name, logo, province }) => {
             some text
           </p>
           <div className="flex flex-wrap justify-starts items-center mt-4">
-            <div className="text-xs mr-2 py-1.5 px-4 text-gray-100 bg-green-600 rounded-2xl">
+            <div className="text-xs mr-2 py-1.5 px-4 mt-2 text-gray-100 bg-green-600 rounded-2xl">
               {`Active Cases: ${province.active_cases}`}
             </div>
-            <div className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-red-500 rounded-2xl">
+            <div className="text-xs mr-2 py-1.5 px-4 mt-2 text-gray-100 bg-red-500 rounded-2xl">
               {`Deaths ${province.cumulative_deaths}`}
             </div>
-            <div className="text-xs mr-2 py-1.5 px-4 text-gray-600 bg-blue-500 rounded-2xl">
+            <div className="text-xs mr-2 py-1.5 px-4 mt-2 text-gray-100 bg-blue-500 rounded-2xl">
               {`Recovered ${province.cumulative_recovered}`}
             </div>
           </div>
