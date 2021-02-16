@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const ProvinceCard = ({ name, logo, province }) => {
-  console.log(province);
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
       <a href="/home" className="w-full block h-full">
