@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { getSummaries } from '../redux/ducks/summary';
 import ProvinceCard from './ProvinceCard';
 import ProvinceDash from './ProvinceDash';
 import AB from '../assets/provinces/ab.png';
@@ -33,18 +34,29 @@ const PROVINCES = [
   { name: 'Yukon', img: YT, path: '/yukon' },
 ];
 
-const Provinces = ({ provinceData }) => {
+const Provinces = () => {
+  const provincesData = useSelector((state) => state.summaries);
+  const dispatch = useDispatch();
+  const { isLoading, summaries } = provincesData;
+
+  useEffect(() => {
+    dispatch(getSummaries());
+  }, []);
+
+  if (isLoading) {
+    return null; //   loader here state is false if data loaded
+  }
+
   return (
     <div className="mt-8 grid lg:grid-cols-4 gap-10">
       <Switch>
         <Route exact path="/">
           {PROVINCES.map((prov) => (
             <ProvinceCard
+              key={prov.name}
               name={prov.name}
               logo={prov.img}
-              province={provinceData.find(
-                (item) => item.province === prov.name,
-              )}
+              province={summaries.find((item) => item.province === prov.name)}
               path={prov.path}
             />
           ))}
@@ -59,7 +71,4 @@ const Provinces = ({ provinceData }) => {
   );
 };
 
-Provinces.propTypes = {
-  provinceData: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
 export default Provinces;
