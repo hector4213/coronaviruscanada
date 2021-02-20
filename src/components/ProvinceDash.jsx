@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
+import HealthRegionList from './HealthRegionList';
 
 const ProvinceDash = ({ soleProvince }) => {
   const getChangePercent = () => {
     const { active_cases, active_cases_change } = soleProvince;
     const increase = active_cases - active_cases_change;
-    const percentage = (active_cases / increase) * 100;
-    return percentage;
-    //    TODO: Fix formula for changes percentage
-    //    TODO: make components for dash/refactor this into components
+    const percentage = 100 - (active_cases / increase) * 100;
+    const output = `${Math.round(percentage)} %`;
+    return output;
   };
+
   return (
     <div className="md:p-8 p-6 bg-white shadow-xl rounded-lg flex justify-between dark:bg-gray-800 md:items-center md:flex-row flex-col gap-12">
       <div>
@@ -39,6 +40,7 @@ const ProvinceDash = ({ soleProvince }) => {
           changes from yesterday ({soleProvince.active_cases_change})
         </p>
       </div>
+      <HealthRegionList province={soleProvince.province} />
     </div>
   );
 };
