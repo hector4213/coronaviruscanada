@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import ActiveCasesCard from './ActiveCasesCard';
-
-import VaccinationInfoCard from './VaccinationInfoCard';
+import ActiveCasesCard from './ProvinceDash/ActiveCasesCard';
+import VaccinationInfoCard from './ProvinceDash/VaccinationInfoCard';
 
 const ProvinceDash = ({ selectedProvince }) => {
   return (
