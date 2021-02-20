@@ -1,13 +1,13 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
+import Nav from './components/Nav';
 import Provinces from './components/Provinces';
 
 const App = () => {
   return (
     <div>
       <Router>
-        <Header />
+        <Nav />
         <Provinces />
       </Router>
     </div>
