@@ -48,7 +48,7 @@ const Provinces = () => {
   }
 
   return (
-    <div className="mt-8 grid lg:grid-cols-4 gap-5">
+    <div className="container mt-5 mx-auto">
       <Switch>
         <Route exact path="/">
           {PROVINCES.map((prov) => (
@@ -65,7 +65,7 @@ const Provinces = () => {
           <Route path={prov.path}>
             <ProvinceDash
               // name={prov.name}
-              soleProvince={summaries.find(
+              selectedProvince={summaries.find(
                 (item) => item.province === prov.name,
               )}
             />
