@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import HealthRegionList from './HealthRegionList';
 
 const ProvinceDetails = ({ province, date }) => {
   return (
@@ -9,6 +10,7 @@ const ProvinceDetails = ({ province, date }) => {
       <h2 className="text-4xl font-extrabold text-black dark:text-white sm:text-4xl">
         <span className="block">{date}</span>
       </h2>
+      <HealthRegionList province={province} />
     </div>
   );
 };
