@@ -10,7 +10,7 @@ const ActiveCasesCard = ({ selectedProvince }) => {
   };
 
   return (
-    <div className="md:p-8 p-6 bg-white shadow-xl rounded-lg flex justify-between dark:bg-gray-800 md:items-center md:flex-row gap-12">
+    <div className="md:p-8 p-6 mt-5 bg-white shadow-xl rounded-lg flex justify-between dark:bg-gray-800 md:items-center md:flex-row gap-12">
       <div>
         <span className="text-bold text-gray-700 dark:text-gray-400 block">
           Active Cases
