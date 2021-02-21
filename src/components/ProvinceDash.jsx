@@ -1,12 +1,30 @@
 import PropTypes from 'prop-types';
 import ActiveCasesCard from './ProvinceDash/ActiveCasesCard';
 import VaccinationInfoCard from './ProvinceDash/VaccinationInfoCard';
+import RecoveriesDeath from './ProvinceDash/RecoveriesDeath';
+import TestingCard from './ProvinceDash/TestingCard';
+import ProvinceDetails from './ProvinceDash/ProvinceDetails';
 
 const ProvinceDash = ({ selectedProvince }) => {
   return (
     <div className="container mx-auto">
+      <ProvinceDetails
+        province={selectedProvince.province}
+        date={selectedProvince.date}
+      />
+      <RecoveriesDeath
+        totalRecoveries={selectedProvince.cumulative_recovered}
+        totalDeaths={selectedProvince.cumulative_deaths}
+      />
       <ActiveCasesCard selectedProvince={selectedProvince} />
-      <VaccinationInfoCard />
+      <VaccinationInfoCard
+        vaccinesToday={selectedProvince.avaccine}
+        totalVaccines={selectedProvince.cumulative_avaccine}
+      />
+      <TestingCard
+        totalTested={selectedProvince.cumulative_testing}
+        testedToday={selectedProvince.testing}
+      />
     </div>
   );
 };
