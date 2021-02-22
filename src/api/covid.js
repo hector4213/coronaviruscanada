@@ -14,8 +14,8 @@ const getRegionSummary = async (provinceCode) => {
       loc: provinceCode,
     },
   });
-  const { provinceData } = response.data;
-  return provinceData;
+  const [regionSummary] = response.data;
+  return regionSummary;
 };
 
 export default {
