@@ -14,7 +14,7 @@ const getRegionSummary = async (provinceCode) => {
       loc: provinceCode,
     },
   });
-  const [regionSummary] = response.data;
+  const [regionSummary] = response.data.summary;
   return regionSummary;
 };
 
