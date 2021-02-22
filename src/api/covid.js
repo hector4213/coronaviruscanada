@@ -8,7 +8,7 @@ const getSummaries = async () => {
   return summary;
 };
 
-const getProvinceStats = async (provinceCode) => {
+const getRegionSummary = async (provinceCode) => {
   const response = await axios.get(baseURL, {
     params: {
       loc: provinceCode,
@@ -20,5 +20,5 @@ const getProvinceStats = async (provinceCode) => {
 
 export default {
   getSummaries,
-  getProvinceStats,
+  getRegionSummary,
 };
