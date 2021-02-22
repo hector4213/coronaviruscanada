@@ -1,8 +1,8 @@
 import covidService from '../../api/covid';
 
 const FETCH_REGION_SUMMARY = 'FETCH_REGION_SUMMARY';
-const CLEAR_REGION_SUMMARY = 'CLEAR_REGION_SUMMARY';
-const CHANGE_REGION_SELECTION = 'CHANGE_REGION_SELECTION';
+const HAS_SELECTED = 'HAS_SELECTED';
+const CLEAR_SELECTION = 'CLEAR_SELECTION';
 
 export const fetchRegionData = (regionSummary) => ({
   type: FETCH_REGION_SUMMARY,
@@ -10,13 +10,18 @@ export const fetchRegionData = (regionSummary) => ({
 });
 
 export const clearSummary = () => ({
-  type: CLEAR_REGION_SUMMARY,
-  payload: null,
+  type: CLEAR_SELECTION,
+  payload: false,
+});
+
+export const hasSelected = () => ({
+  type: HAS_SELECTED,
+  payload: true,
 });
 
 const initialState = {
   regionData: null,
-  currrentSelection: null,
+  hasSelected: false,
 };
 
 export default (state = initialState, action) => {
@@ -24,11 +29,11 @@ export default (state = initialState, action) => {
     case FETCH_REGION_SUMMARY: {
       return { ...state, regionData: action.payload };
     }
-    case CLEAR_REGION_SUMMARY: {
-      return { ...state, RegionData: null };
+    case CLEAR_SELECTION: {
+      return { ...state, hasSelected: action.payload };
     }
-    case CHANGE_REGION_SELECTION: {
-      return { ...state, currrentSelection: action.payload };
+    case HAS_SELECTED: {
+      return { ...state, hasSelected: action.payload };
     }
     default: {
       return state;
@@ -40,6 +45,7 @@ export const getRegionSummary = (region) => async (dispatch) => {
   try {
     const regionSummaries = await covidService.getRegionSummary(region);
     dispatch(fetchRegionData(regionSummaries));
+    dispatch(hasSelected());
   } catch (error) {
     console.log(error);
   }
