@@ -1,47 +1,51 @@
 import PropTypes from 'prop-types';
+import { FaBriefcaseMedical, FaRegSadCry } from 'react-icons/fa';
+import { GiDeathSkull, GiPlagueDoctorProfile } from 'react-icons/gi';
 
 const RegionCard = ({ data }) => {
-  console.log(data);
+  const {
+    cases,
+    cumulative_cases,
+    cumulative_deaths,
+    deaths,
+    health_region,
+  } = data;
   return (
     <div className="shadow-lg px-4 py-6 w-full bg-white dark:bg-gray-800 relative">
       <p className="text-sm w-max text-gray-700 dark:text-white font-semibold border-b border-gray-200">
-        Project Reffered
+        {health_region}
       </p>
       <div className="flex items-end space-x-2 my-6">
-        <p className="text-5xl text-black dark:text-white font-bold">12</p>
+        <p className="text-5xl text-black dark:text-white font-bold">{cases}</p>
         <span className="text-green-500 text-xl font-bold flex items-center">
-          <div>icon here</div>
-          22%
+          <FaBriefcaseMedical />
         </span>
       </div>
       <div className="dark:text-white">
         <div className="flex items-center pb-2 mb-2 text-sm space-x-12 md:space-x-24 justify-between border-b border-gray-200">
           <p>Deaths Today</p>
-          <div className="flex items-end text-xs">
-            34
-            <span className="flex items-center">
-              <div>icon here</div>
-              22%
+          <div className="flex items-center text-lg">
+            {deaths}
+            <span className="flex items-center text-blue-500">
+              <FaRegSadCry />
             </span>
           </div>
         </div>
         <div className="flex items-center mb-2 pb-2 text-sm space-x-12 md:space-x-24 justify-between border-b border-gray-200">
           <p>Total Deaths</p>
-          <div className="flex items-end text-xs">
-            13
-            <span className="flex items-center">
-              <div>icon here</div>
-              12%
+          <div className="flex items-center  text-lg">
+            {cumulative_deaths}
+            <span className="flex items-center text-red-500">
+              <GiDeathSkull />
             </span>
           </div>
         </div>
         <div className="flex items-center text-sm space-x-12 md:space-x-24 justify-between">
-          <p>New visitor</p>
-          <div className="flex items-end text-xs">
-            45
+          <p>Total Cases</p>
+          <div className="flex items-center text-lg">
+            {cumulative_cases}
             <span className="flex items-center">
-              <div>icon here</div>
-              41%
+              <GiPlagueDoctorProfile />
             </span>
           </div>
         </div>
