@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { FaBriefcaseMedical, FaRegSadCry } from 'react-icons/fa';
 import { GiDeathSkull, GiPlagueDoctorProfile } from 'react-icons/gi';
 import { CgCloseO } from 'react-icons/cg';
+import { clearRegionSummary } from '../../redux/ducks/regions';
 
 const RegionCard = ({ data }) => {
   const {
@@ -11,6 +13,11 @@ const RegionCard = ({ data }) => {
     deaths,
     health_region,
   } = data;
+  const dispatch = useDispatch();
+  const handleClose = () => {
+    dispatch(clearRegionSummary());
+  };
+
   return (
     <div className="shadow-lg px-4 py-6 w-full bg-white dark:bg-gray-800 relative">
       <p className="text-sm w-max text-gray-700 dark:text-white font-semibold border-b border-gray-200">
@@ -52,7 +59,7 @@ const RegionCard = ({ data }) => {
         </div>
       </div>
       <span className="absolute top-0 right-0 p-3">
-        <CgCloseO />
+        <CgCloseO onClick={handleClose} />
       </span>
     </div>
   );
