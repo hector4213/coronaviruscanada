@@ -19,19 +19,19 @@ import YT from '../assets/provinces/yt.png';
 import SK from '../assets/provinces/sk.png';
 
 const PROVINCES = [
-  { name: 'Alberta', img: AB, path: '/alberta' },
-  { name: 'Manitoba', img: MB, path: '/manitoba' },
-  { name: 'Ontario', img: ON, path: '/ontario' },
-  { name: 'PEI', img: PEI, path: '/pei' },
-  { name: 'BC', img: BC, path: '/bc' },
-  { name: 'New Brunswick', img: NB, path: '/nb' },
-  { name: 'NL', img: NL, path: '/nl' },
-  { name: 'Quebec', img: QC, path: '/qc' },
-  { name: 'Nunavut', img: NV, path: '/nunavut' },
-  { name: 'NWT', img: NWT, path: '/nwt' },
-  { name: 'Saskatchewan', img: SK, path: '/saskatchewan' },
-  { name: 'Nova Scotia', img: NS, path: '/novascotia' },
-  { name: 'Yukon', img: YT, path: '/yukon' },
+  { name: 'Alberta', img: AB, path: '/alberta', code: 'AB' },
+  { name: 'Manitoba', img: MB, path: '/manitoba', code: 'MB' },
+  { name: 'Ontario', img: ON, path: '/ontario', code: 'ON' },
+  { name: 'PEI', img: PEI, path: '/pei', code: 'PE' },
+  { name: 'BC', img: BC, path: '/bc', code: 'BC' },
+  { name: 'New Brunswick', img: NB, path: '/nb', code: 'NB' },
+  { name: 'NL', img: NL, path: '/nl', code: 'NL' },
+  { name: 'Quebec', img: QC, path: '/qc', code: 'QC' },
+  { name: 'Nunavut', img: NV, path: '/nunavut', code: 'NU' },
+  { name: 'NWT', img: NWT, path: '/nwt', code: 'NT' },
+  { name: 'Saskatchewan', img: SK, path: '/saskatchewan', code: 'SK' },
+  { name: 'Nova Scotia', img: NS, path: '/novascotia', code: 'NS' },
+  { name: 'Yukon', img: YT, path: '/yukon', code: 'YT' },
 ];
 
 const Provinces = () => {
@@ -68,6 +68,7 @@ const Provinces = () => {
               selectedProvince={summaries.find(
                 (item) => item.province === prov.name,
               )}
+              code={prov.code}
             />
           </Route>
         ))}
