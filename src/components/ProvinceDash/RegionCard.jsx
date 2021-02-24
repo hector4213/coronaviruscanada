@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { FaBriefcaseMedical, FaRegSadCry } from 'react-icons/fa';
 import { GiDeathSkull, GiPlagueDoctorProfile } from 'react-icons/gi';
+import { CgCloseO } from 'react-icons/cg';
 
 const RegionCard = ({ data }) => {
   const {
@@ -50,6 +51,9 @@ const RegionCard = ({ data }) => {
           </div>
         </div>
       </div>
+      <span className="absolute top-0 right-0 p-3">
+        <CgCloseO />
+      </span>
     </div>
   );
 };
