@@ -58,7 +58,7 @@ const RegionCard = ({ data }) => {
           </div>
         </div>
       </div>
-      <span className="absolute top-0 right-0 p-3">
+      <span className="absolute top-0 right-0 p-3 cursor-pointer">
         <CgCloseO onClick={handleClose} />
       </span>
     </div>
