@@ -16,7 +16,7 @@ const HealthRegionList = ({ province }) => {
   return (
     <>
       <label className="text-gray-700 text-center" htmlFor="regions">
-        Select to view region summary
+        View Region Summary
         <select
           onChange={handleChange}
           className="text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
