@@ -9,7 +9,7 @@ export const fetchRegionData = (regionSummary) => ({
   payload: regionSummary,
 });
 
-export const clearSummary = () => ({
+export const clearRegionSummary = () => ({
   type: CLEAR_SELECTION,
   payload: false,
 });
