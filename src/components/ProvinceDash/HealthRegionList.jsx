@@ -15,7 +15,7 @@ const HealthRegionList = ({ province }) => {
   console.log(regionData);
   return (
     <>
-      <label className="text-gray-700" htmlFor="regions">
+      <label className="text-gray-700 text-center" htmlFor="regions">
         Select to view region summary
         <select
           onChange={handleChange}
