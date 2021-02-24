@@ -18,7 +18,17 @@ const getRegionSummary = async (provinceCode) => {
   return regionSummary;
 };
 
+const getSummaryByDate = async (prov, userDate) => {
+  const response = await axios.get(baseURL, {
+    params: {
+      loc: prov,
+      date: userDate,
+    },
+  });
+};
+
 export default {
   getSummaries,
   getRegionSummary,
+  getSummaryByDate,
 };
