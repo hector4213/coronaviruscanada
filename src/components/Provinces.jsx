@@ -19,19 +19,19 @@ import YT from '../assets/provinces/yt.png';
 import SK from '../assets/provinces/sk.png';
 
 const PROVINCES = [
-  { name: 'Alberta', img: AB, path: '/alberta', code: 'AB' },
-  { name: 'Manitoba', img: MB, path: '/manitoba', code: 'MB' },
-  { name: 'Ontario', img: ON, path: '/ontario', code: 'ON' },
-  { name: 'PEI', img: PEI, path: '/pei', code: 'PE' },
-  { name: 'BC', img: BC, path: '/bc', code: 'BC' },
-  { name: 'New Brunswick', img: NB, path: '/nb', code: 'NB' },
-  { name: 'NL', img: NL, path: '/nl', code: 'NL' },
-  { name: 'Quebec', img: QC, path: '/qc', code: 'QC' },
-  { name: 'Nunavut', img: NV, path: '/nunavut', code: 'NU' },
-  { name: 'NWT', img: NWT, path: '/nwt', code: 'NT' },
-  { name: 'Saskatchewan', img: SK, path: '/saskatchewan', code: 'SK' },
-  { name: 'Nova Scotia', img: NS, path: '/novascotia', code: 'NS' },
-  { name: 'Yukon', img: YT, path: '/yukon', code: 'YT' },
+  { id: 1, name: 'Alberta', img: AB, path: '/alberta', code: 'AB' },
+  { id: 2, name: 'Manitoba', img: MB, path: '/manitoba', code: 'MB' },
+  { id: 3, name: 'Ontario', img: ON, path: '/ontario', code: 'ON' },
+  { id: 4, name: 'PEI', img: PEI, path: '/pei', code: 'PE' },
+  { id: 5, name: 'BC', img: BC, path: '/bc', code: 'BC' },
+  { id: 6, name: 'New Brunswick', img: NB, path: '/nb', code: 'NB' },
+  { id: 7, name: 'NL', img: NL, path: '/nl', code: 'NL' },
+  { id: 8, name: 'Quebec', img: QC, path: '/qc', code: 'QC' },
+  { id: 9, name: 'Nunavut', img: NV, path: '/nunavut', code: 'NU' },
+  { id: 10, name: 'NWT', img: NWT, path: '/nwt', code: 'NT' },
+  { id: 11, name: 'Saskatchewan', img: SK, path: '/saskatchewan', code: 'SK' },
+  { id: 12, name: 'Nova Scotia', img: NS, path: '/novascotia', code: 'NS' },
+  { id: 13, name: 'Yukon', img: YT, path: '/yukon', code: 'YT' },
 ];
 
 const Provinces = () => {
@@ -53,7 +53,7 @@ const Provinces = () => {
         <Route exact path="/">
           {PROVINCES.map((prov) => (
             <ProvinceCard
-              key={prov.name}
+              key={prov.id}
               name={prov.name}
               logo={prov.img}
               province={summaries.find((item) => item.province === prov.name)}
@@ -62,7 +62,7 @@ const Provinces = () => {
           ))}
         </Route>
         {PROVINCES.map((prov) => (
-          <Route path={prov.path}>
+          <Route path={prov.path} key={prov.id}>
             <ProvinceDash
               // name={prov.name}
               selectedProvince={summaries.find(
