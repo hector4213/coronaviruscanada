@@ -63,7 +63,7 @@ module.exports = {
     { region: 'Niagara', code: 3546 },
     { region: 'North Bay Parry Sound', code: 3547 },
     { region: 'North Western', code: 3549 },
-    { region: 'Ottawa', code: 3549 },
+    { region: 'Ottawa', code: 3551 },
     { region: 'Peel', code: 3553 },
     { region: 'Peterborough', code: 3555 },
     { region: 'Porcupine', code: 3556 },
