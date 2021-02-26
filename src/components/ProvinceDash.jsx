@@ -32,7 +32,7 @@ const ProvinceDash = ({ selectedProvince, code }) => {
 
 ProvinceDash.propTypes = {
   selectedProvince: PropTypes.instanceOf(Object).isRequired,
-  code: PropTypes.number.isRequired,
+  code: PropTypes.string.isRequired,
 };
 
 export default ProvinceDash;
