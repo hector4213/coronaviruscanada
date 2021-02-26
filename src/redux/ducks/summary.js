@@ -4,8 +4,7 @@ const FETCH_SUMMARIES = 'FETCH_SUMMARIES';
 const DATA_SUCCESS = 'DATA_SUCCESS';
 const DATA_ERROR = 'DATA_ERROR';
 const CHANGE_DATE = 'CHANGE_DATE';
-
-const today = new Date().toISOString().substr(0, 10);
+const SET_TODAY_DATE = 'SET_TODAY_DATE';
 
 export const fetchSummaries = (summaries) => ({
   type: FETCH_SUMMARIES,
@@ -26,10 +25,15 @@ export const userChangedDate = (datedSummary) => ({
   payload: datedSummary,
 });
 
+export const setTodayDate = (currDate) => ({
+  type: SET_TODAY_DATE,
+  payload: currDate,
+});
+
 const initialState = {
   summaries: [],
   isLoading: true,
-  currentDate: today,
+  currentDate: '',
 };
 
 export default (state = initialState, action) => {
@@ -45,6 +49,9 @@ export default (state = initialState, action) => {
     }
     case CHANGE_DATE: {
       return { ...state, summaries: action.payload };
+    }
+    case SET_TODAY_DATE: {
+      return { ...state, currentDate: action.payload };
     }
     default:
       return state;
