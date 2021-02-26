@@ -23,7 +23,9 @@ const HealthRegionList = ({ province }) => {
           name="regions"
         >
           {regions[province].map((prov) => (
-            <option value={prov.code}>{prov.region}</option>
+            <option key={prov.code} value={prov.code}>
+              {prov.region}
+            </option>
           ))}
         </select>
       </label>
