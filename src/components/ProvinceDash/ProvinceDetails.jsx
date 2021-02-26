@@ -8,8 +8,6 @@ const ProvinceDetails = ({ province, date, code }) => {
   const currentDate = useSelector((state) => state.summaries.currentDate);
   const dispatch = useDispatch();
 
-  console.log(currentDate, date, code);
-
   const convertForInput = (dateString) => {
     const formattedDate = dateString.split('-').reverse().join('-');
     return formattedDate;
@@ -17,6 +15,7 @@ const ProvinceDetails = ({ province, date, code }) => {
 
   const handleDateChange = (e) => {
     dispatch(changeSummaryDate(code, e.target.value));
+    dispatch(setTodayDate(e.target.value));
   };
 
   useEffect(() => {
@@ -44,6 +43,6 @@ const ProvinceDetails = ({ province, date, code }) => {
 ProvinceDetails.propTypes = {
   province: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  code: PropTypes.number.isRequired,
+  code: PropTypes.string.isRequired,
 };
 export default ProvinceDetails;
