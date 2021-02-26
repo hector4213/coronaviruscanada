@@ -13,7 +13,9 @@ const RegionCard = ({ data }) => {
     deaths,
     health_region,
   } = data;
+
   const dispatch = useDispatch();
+
   const handleClose = () => {
     dispatch(clearRegionSummary());
   };
