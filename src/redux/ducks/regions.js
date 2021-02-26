@@ -41,9 +41,12 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getRegionSummary = (region) => async (dispatch) => {
+export const getRegionSummary = (region, userDate = '') => async (dispatch) => {
   try {
-    const regionSummaries = await covidService.getRegionSummary(region);
+    const regionSummaries = await covidService.getRegionSummary(
+      region,
+      userDate,
+    );
     dispatch(fetchRegionData(regionSummaries));
     dispatch(hasSelected());
   } catch (error) {
