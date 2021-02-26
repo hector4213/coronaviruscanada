@@ -15,7 +15,7 @@ module.exports = {
   ],
   Manitoba: [
     { region: 'Interlake-Eastern', code: 4603 },
-    { region: 'Northern', code: 4606 },
+    { region: 'Northern', code: 4604 },
     { region: 'Prairie Mountain', code: 4602 },
     { region: 'Southern Health', code: 4605 },
     { region: 'Winnipeg', code: 4601 },
