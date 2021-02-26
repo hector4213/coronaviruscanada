@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRegionSummary } from '../../redux/ducks/regions';
 import regions from '../../assets/static/healthregions';
@@ -6,13 +7,20 @@ import RegionCard from './RegionCard';
 
 const HealthRegionList = ({ province }) => {
   const provinceRegion = useSelector((state) => state.regionSummaries);
+  const currentDate = useSelector((state) => state.summaries.currentDate);
   const { hasSelected, regionData } = provinceRegion;
   const dispatch = useDispatch();
+  const ref = useRef();
+
   const handleChange = (e) => {
-    dispatch(getRegionSummary(e.target.value));
+    dispatch(getRegionSummary(e.target.value, currentDate));
   };
 
-  console.log(regionData);
+  useEffect(() => {
+    if (hasSelected) {
+      dispatch(getRegionSummary(ref.current.value, currentDate));
+    }
+  }, [currentDate]);
   return (
     <>
       <label className="text-gray-700 text-center" htmlFor="regions">
@@ -23,7 +31,7 @@ const HealthRegionList = ({ province }) => {
           name="regions"
         >
           {regions[province].map((prov) => (
-            <option key={prov.code} value={prov.code}>
+            <option key={prov.code} value={prov.code} ref={ref}>
               {prov.region}
             </option>
           ))}
