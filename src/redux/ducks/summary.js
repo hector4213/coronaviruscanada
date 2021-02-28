@@ -1,6 +1,5 @@
 import covidService from '../../api/covid';
 
-const FETCH_SUMMARIES = 'FETCH_SUMMARIES';
 const DATA_SUCCESS = 'DATA_SUCCESS';
 const DATA_ERROR = 'DATA_ERROR';
 const CHANGE_DATE = 'CHANGE_DATE';
@@ -8,15 +7,11 @@ const SET_TODAY_DATE = 'SET_TODAY_DATE';
 const FETCH_TODAY = 'FETCH_TODAY';
 const FETCH_PROVINCE = 'FETCH_PROVINCE';
 
-export const fetchSummaries = (summaries) => ({
-  type: FETCH_SUMMARIES,
-  payload: summaries,
-});
-
 export const dataLoaded = () => ({
   type: DATA_SUCCESS,
   payload: false,
 });
+
 export const dataError = () => ({
   type: DATA_ERROR,
   payload: true,
