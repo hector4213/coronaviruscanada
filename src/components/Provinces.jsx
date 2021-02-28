@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getSummaries } from '../redux/ducks/summary';
+import { fetchTodaySummary } from '../redux/ducks/summary';
 import ProvinceCard from './ProvinceCard';
 import ProvinceDash from './ProvinceDash';
 import AB from '../assets/provinces/ab.png';
@@ -35,12 +35,12 @@ const PROVINCES = [
 ];
 
 const Provinces = () => {
-  const provincesData = useSelector((state) => state.summaries);
+  const provinceGrid = useSelector((state) => state.summaries);
   const dispatch = useDispatch();
-  const { isLoading, summaries } = provincesData;
+  const { isLoading, today } = provinceGrid;
 
   useEffect(() => {
-    dispatch(getSummaries());
+    dispatch(fetchTodaySummary());
   }, []);
 
   if (isLoading) {
@@ -56,20 +56,14 @@ const Provinces = () => {
               key={prov.id}
               name={prov.name}
               logo={prov.img}
-              province={summaries.find((item) => item.province === prov.name)}
+              province={today.find((item) => item.province === prov.name)}
               path={prov.path}
             />
           ))}
         </Route>
         {PROVINCES.map((prov) => (
           <Route path={prov.path} key={prov.id}>
-            <ProvinceDash
-              // name={prov.name}
-              selectedProvince={summaries.find(
-                (item) => item.province === prov.name,
-              )}
-              code={prov.code}
-            />
+            <ProvinceDash code={prov.code} />
           </Route>
         ))}
       </Switch>
