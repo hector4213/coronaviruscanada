@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const baseURL = 'https://api.opencovid.ca/summary';
-const versionURL = 'https://api.opencovid.ca/version';
 
 const getSummaries = async () => {
   const response = await axios.get(baseURL);
@@ -20,26 +19,30 @@ const getRegionSummary = async (provinceCode, userDate = '') => {
   return regionSummary;
 };
 
-const getSummaryByDate = async (prov, userDate) => {
+const getSummaryByDate = async (userDate) => {
   const response = await axios.get(baseURL, {
     params: {
-      loc: prov,
       date: userDate,
     },
   });
 
-  console.log(response.data.summary);
   return response.data.summary;
 };
 
-const getLastUpdated = async () => {
-  const response = await axios.get(versionURL);
-  return response.data;
+const getProvinceSummary = async (provCode, userDate = '') => {
+  const response = await axios.get(baseURL, {
+    params: {
+      loc: provCode,
+      date: userDate,
+    },
+  });
+  const [provinceSummary] = response.data.summary;
+  return provinceSummary;
 };
 
 export default {
   getSummaries,
   getRegionSummary,
   getSummaryByDate,
-  getLastUpdated,
+  getProvinceSummary,
 };
