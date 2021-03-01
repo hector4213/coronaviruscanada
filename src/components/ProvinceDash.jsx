@@ -1,37 +1,53 @@
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProvinceSummary } from '../redux/ducks/summary';
 import ActiveCasesCard from './ProvinceDash/ActiveCasesCard';
 import VaccinationInfoCard from './ProvinceDash/VaccinationInfoCard';
 import RecoveriesDeath from './ProvinceDash/RecoveriesDeath';
 import TestingCard from './ProvinceDash/TestingCard';
 import ProvinceDetails from './ProvinceDash/ProvinceDetails';
 
-const ProvinceDash = ({ selectedProvince, code }) => {
+const ProvinceDash = ({ code }) => {
+  const provinceData = useSelector((state) => state.summaries);
+  const { currentProvince, currentDate } = provinceData;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(fetchProvinceSummary(code, currentDate));
+    })();
+  }, [currentDate]);
+
+  if (!currentProvince) {
+    return null;
+  }
   return (
     <div className="container mx-auto">
       <ProvinceDetails
-        province={selectedProvince.province}
-        date={selectedProvince.date}
+        province={currentProvince.province}
+        date={currentProvince.date}
         code={code}
       />
       <RecoveriesDeath
-        totalRecoveries={selectedProvince.cumulative_recovered}
-        totalDeaths={selectedProvince.cumulative_deaths}
+        totalRecoveries={currentProvince.cumulative_recovered}
+        totalDeaths={currentProvince.cumulative_deaths}
       />
-      <ActiveCasesCard selectedProvince={selectedProvince} />
+      {/* active cases card takes these props: active_cases, active_cases_change, should not acccept a whole object */}
+      <ActiveCasesCard selectedProvince={currentProvince} />
       <VaccinationInfoCard
-        vaccinesToday={selectedProvince.avaccine}
-        totalVaccines={selectedProvince.cumulative_avaccine}
+        vaccinesToday={currentProvince.avaccine}
+        totalVaccines={currentProvince.cumulative_avaccine}
       />
       <TestingCard
-        totalTested={selectedProvince.cumulative_testing}
-        testedToday={selectedProvince.testing}
+        totalTested={currentProvince.cumulative_testing}
+        testedToday={currentProvince.testing}
       />
     </div>
   );
 };
 
 ProvinceDash.propTypes = {
-  selectedProvince: PropTypes.instanceOf(Object).isRequired,
   code: PropTypes.string.isRequired,
 };
 
