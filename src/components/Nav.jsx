@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
@@ -12,30 +13,30 @@ const Header = () => {
               </a>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <a
+                  <Link
                     className="text-gray-800  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/#"
+                    to="/"
                   >
                     Today
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/#"
+                    to="/trends"
                   >
                     Trends
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/#"
+                    to="/vaccine"
                   >
                     Get Vaccinated
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    href="/#"
+                    to="/about"
                   >
-                    Contact
-                  </a>
+                    About
+                  </Link>
                 </div>
               </div>
             </div>
