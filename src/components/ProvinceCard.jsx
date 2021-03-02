@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 const ProvinceCard = ({ name, logo, province, path }) => {
+  const { url } = useRouteMatch();
   return (
     <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
-      <Link to={path} className="w-full block h-full">
+      <Link to={`${url}${path}`} className="w-full block h-full">
         <img
           alt="province"
           src={logo}
