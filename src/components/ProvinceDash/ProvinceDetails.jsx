@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeSummaryDate, setTodayDate } from '../../redux/ducks/summary';
 import HealthRegionList from './HealthRegionList';
 
-const ProvinceDetails = ({ province, date, code }) => {
+const ProvinceDetails = ({ province, date }) => {
   const currentDate = useSelector((state) => state.summaries.currentDate);
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ const ProvinceDetails = ({ province, date, code }) => {
   };
 
   const handleDateChange = (e) => {
-    dispatch(changeSummaryDate(code, e.target.value));
+    dispatch(changeSummaryDate(e.target.value));
     dispatch(setTodayDate(e.target.value));
   };
 
@@ -43,6 +43,5 @@ const ProvinceDetails = ({ province, date, code }) => {
 ProvinceDetails.propTypes = {
   province: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  code: PropTypes.string.isRequired,
 };
 export default ProvinceDetails;
