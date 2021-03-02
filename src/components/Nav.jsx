@@ -14,25 +14,25 @@ const Header = () => {
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <Link
-                    className="text-gray-800  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    to="/"
+                    className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    to="/today"
                   >
                     Today
                   </Link>
                   <Link
-                    className="text-gray-300 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    className="text-gray-800 dark:text-white  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                     to="/trends"
                   >
                     Trends
                   </Link>
                   <Link
-                    className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                     to="/vaccine"
                   >
                     Get Vaccinated
                   </Link>
                   <Link
-                    className="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                     to="/about"
                   >
                     About
