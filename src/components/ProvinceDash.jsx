@@ -21,6 +21,7 @@ const ProvinceDash = ({ code }) => {
 
   if (!currentProvince) {
     return null;
+    // TODO: add loader
   }
   return (
     <div className="container mx-auto">
