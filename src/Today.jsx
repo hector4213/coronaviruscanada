@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTodaySummary } from './redux/ducks/summary';
 import ProvinceCard from './components/ProvinceCard';
@@ -37,6 +37,7 @@ const PROVINCES = [
 const Provinces = () => {
   const provinceGrid = useSelector((state) => state.summaries);
   const dispatch = useDispatch();
+  const { path } = useRouteMatch();
   const { isLoading, today } = provinceGrid;
 
   useEffect(() => {
@@ -49,24 +50,22 @@ const Provinces = () => {
 
   return (
     <div className="container mt-5 mx-auto">
-      <Switch>
-        <Route exact path="/">
-          {PROVINCES.map((prov) => (
-            <ProvinceCard
-              key={prov.id}
-              name={prov.name}
-              logo={prov.img}
-              province={today.find((item) => item.province === prov.name)}
-              path={prov.path}
-            />
-          ))}
-        </Route>
+      <Route exact path={`${path}`}>
         {PROVINCES.map((prov) => (
-          <Route path={prov.path} key={prov.id}>
-            <ProvinceDash code={prov.code} />
-          </Route>
+          <ProvinceCard
+            key={prov.id}
+            name={prov.name}
+            logo={prov.img}
+            province={today.find((item) => item.province === prov.name)}
+            path={prov.path}
+          />
         ))}
-      </Switch>
+      </Route>
+      {PROVINCES.map((prov) => (
+        <Route path={`${path}${prov.path}`} key={prov.id}>
+          <ProvinceDash code={prov.code} />
+        </Route>
+      ))}
     </div>
   );
 };
