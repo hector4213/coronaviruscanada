@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSummaryDate, setTodayDate } from '../../redux/ducks/summary';
+import { userHasSelected, regionSelect } from '../../redux/ducks/regions';
 import HealthRegionList from './HealthRegionList';
 
 const ProvinceDetails = ({ province, date }) => {
@@ -18,8 +19,14 @@ const ProvinceDetails = ({ province, date }) => {
     dispatch(setTodayDate(e.target.value));
   };
 
+  const resetRegionCard = () => {
+    dispatch(userHasSelected(false));
+    dispatch(regionSelect(''));
+  };
+
   useEffect(() => {
     dispatch(setTodayDate(convertForInput(date)));
+    return () => resetRegionCard();
   }, []);
 
   return (
