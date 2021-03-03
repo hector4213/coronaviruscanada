@@ -1,11 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  getRegionSummary,
-  regionSelect,
-  userHasSelected,
-} from '../../redux/ducks/regions';
+import { getRegionSummary, regionSelect } from '../../redux/ducks/regions';
 import regions from '../../assets/static/healthregions';
 import RegionCard from './RegionCard';
 
@@ -15,16 +11,10 @@ const HealthRegionList = ({ province }) => {
   const { hasSelected, regionData, selectedRegion } = provinceRegion;
   const dispatch = useDispatch();
 
-  const componentReset = () => {
-    dispatch(regionSelect(null));
-    dispatch(userHasSelected(false));
-  };
-
   useEffect(() => {
     if (selectedRegion) {
       dispatch(getRegionSummary(selectedRegion, currentDate));
     }
-    return () => componentReset();
   }, [selectedRegion, currentDate]);
 
   return (
