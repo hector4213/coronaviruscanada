@@ -14,10 +14,8 @@ const ProvinceDash = ({ code }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      await dispatch(fetchProvinceSummary(code, currentDate));
-    })();
-  }, [currentDate]);
+    dispatch(fetchProvinceSummary(code, currentDate));
+  }, []);
 
   if (!currentProvince) {
     return null;
@@ -25,11 +23,7 @@ const ProvinceDash = ({ code }) => {
   }
   return (
     <div className="container mx-auto">
-      <ProvinceDetails
-        province={currentProvince.province}
-        date={currentProvince.date}
-        code={code}
-      />
+      <ProvinceDetails province={currentProvince.province} code={code} />
       <RecoveriesDeath
         totalRecoveries={currentProvince.cumulative_recovered}
         totalDeaths={currentProvince.cumulative_deaths}
