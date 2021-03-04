@@ -1,22 +1,21 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeSummaryDate, setTodayDate } from '../../redux/ducks/summary';
+import { setTodayDate, fetchProvinceSummary } from '../../redux/ducks/summary';
 import { userHasSelected, regionSelect } from '../../redux/ducks/regions';
 import HealthRegionList from './HealthRegionList';
 
-const ProvinceDetails = ({ province, date }) => {
-  const currentDate = useSelector((state) => state.summaries.currentDate);
+const ProvinceDetails = ({ province, code }) => {
+  const { currentDate } = useSelector((state) => state.summaries);
+  const { apiLastUpdated, apiStartDate } = useSelector(
+    (state) => state.appData,
+  );
   const dispatch = useDispatch();
 
-  const convertForInput = (dateString) => {
-    const formattedDate = dateString.split('-').reverse().join('-');
-    return formattedDate;
-  };
-
   const handleDateChange = (e) => {
-    dispatch(changeSummaryDate(e.target.value));
+    // TODO: first dispatch changes state for today, shoud just change for this component
     dispatch(setTodayDate(e.target.value));
+    dispatch(fetchProvinceSummary(code, e.target.value));
   };
 
   const resetRegionCard = () => {
@@ -25,7 +24,7 @@ const ProvinceDetails = ({ province, date }) => {
   };
 
   useEffect(() => {
-    dispatch(setTodayDate(convertForInput(date)));
+    // TODO : this causing multiple rerender
     return () => resetRegionCard();
   }, []);
 
@@ -39,6 +38,8 @@ const ProvinceDetails = ({ province, date }) => {
           type="date"
           value={currentDate}
           name="currentdate"
+          min={apiStartDate}
+          max={apiLastUpdated}
           onChange={handleDateChange}
         />
       </h2>
@@ -49,6 +50,6 @@ const ProvinceDetails = ({ province, date }) => {
 
 ProvinceDetails.propTypes = {
   province: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  code: PropTypes.string.isRequired,
 };
 export default ProvinceDetails;
