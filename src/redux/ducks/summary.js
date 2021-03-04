@@ -71,6 +71,7 @@ export default (state = initialState, action) => {
 };
 
 export const changeSummaryDate = (userDate) => async (dispatch) => {
+  // TODO: this changes the state for TODAY as well, should just change for provincedash
   try {
     const specificSummary = await covidService.getSummaryByDate(userDate);
     dispatch(userChangedDate(specificSummary));
