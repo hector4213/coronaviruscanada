@@ -28,7 +28,7 @@ export const regionSelect = (regionCode) => ({
 const initialState = {
   regionData: null,
   hasSelected: false,
-  selectedRegion: null,
+  selectedRegion: '',
 };
 
 export default (state = initialState, action) => {
