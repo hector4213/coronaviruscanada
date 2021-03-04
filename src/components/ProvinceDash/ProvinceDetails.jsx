@@ -13,7 +13,6 @@ const ProvinceDetails = ({ province, code }) => {
   const dispatch = useDispatch();
 
   const handleDateChange = (e) => {
-    // TODO: first dispatch changes state for today, shoud just change for this component
     dispatch(setTodayDate(e.target.value));
     dispatch(fetchProvinceSummary(code, e.target.value));
   };
@@ -24,7 +23,6 @@ const ProvinceDetails = ({ province, code }) => {
   };
 
   useEffect(() => {
-    // TODO : this causing multiple rerender
     return () => resetRegionCard();
   }, []);
 
