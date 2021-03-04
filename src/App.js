@@ -11,7 +11,7 @@ import Trends from './Trends';
 const App = () => {
   const dispatch = useDispatch();
   const { apiLastUpdated } = useSelector((state) => state.appData);
-  console.log(apiLastUpdated);
+
   useEffect(() => {
     dispatch(fetchVersionDate());
   }, []);
