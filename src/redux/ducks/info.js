@@ -9,7 +9,7 @@ export const fetchLatestAPIDate = (date) => ({
 
 const initialState = {
   apiLastUpdated: '',
-  apiStartDate: '',
+  apiStartDate: '2020-09-01',
 };
 
 export default (state = initialState, action) => {
