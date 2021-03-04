@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchVersionDate } from './redux/ducks/info';
 import './App.css';
 import Nav from './components/Nav';
 import Home from './Home';
@@ -6,6 +9,13 @@ import Today from './Today';
 import Trends from './Trends';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const { apiLastUpdated } = useSelector((state) => state.appData);
+  console.log(apiLastUpdated);
+  useEffect(() => {
+    dispatch(fetchVersionDate());
+  }, []);
+
   return (
     <div>
       <Router>
