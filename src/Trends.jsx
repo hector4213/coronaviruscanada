@@ -1,7 +1,9 @@
+import Chart from './components/Charts/Chart';
+
 const Trends = () => {
   return (
     <div>
-      <h1>Hi i wanna see the trends</h1>
+      <Chart />
     </div>
   );
 };
