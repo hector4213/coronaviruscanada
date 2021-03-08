@@ -1,35 +1,18 @@
-import { useState, useEffect } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Pie } from 'react-chartjs-2';
+import { getProvTrendsByDate } from '../../redux/ducks/chart';
 
 const Chart = () => {
-  const [chartData, setChartData] = useState({});
-
-  const chart = async () => {
-    const dataCases = [];
-    const response = await fetch(
-      'https://api.opencovid.ca/timeseries?stat=cases&loc=prov&date=03-03-2021',
-    );
-    const apiData = await response.json();
-
-    apiData.cases.forEach((item) => dataCases.push(item));
-
-    setChartData({
-      labels: apiData.cases.map((item) => item.province),
-      datasets: [
-        {
-          label: 'Active Cases',
-          data: dataCases.map((item) => item.cases),
-        },
-      ],
-    });
-  };
+  const chartData = useSelector((state) => state.chart);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    chart();
+    dispatch(getProvTrendsByDate('prov', '01-09-2020'));
   }, []);
   return (
     <div>
-      <Bar data={chartData} width={100} height={50} options={{}} />
+      <Pie data={chartData} width={100} height={50} options={{}} />
     </div>
   );
 };
