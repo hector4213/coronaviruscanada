@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { GiHealthIncrease } from 'react-icons/gi';
 
-const ActiveCasesCard = ({ selectedProvince }) => {
+const ActiveCasesCard = ({ activeCases, activeCasesChange }) => {
   return (
     <div className="md:p-8 p-6 mt-5 bg-white shadow-xl rounded-lg flex justify-between dark:bg-gray-800 md:items-center md:flex-row gap-12">
       <div>
@@ -9,7 +9,7 @@ const ActiveCasesCard = ({ selectedProvince }) => {
           Active Cases
         </span>
         <span className="text-yellow-500 text-4xl md:text-5xl mt-2 font-black block">
-          {selectedProvince.active_cases}
+          {activeCases}
         </span>
       </div>
       <div className="self-end">
@@ -17,9 +17,9 @@ const ActiveCasesCard = ({ selectedProvince }) => {
           <p className="text-xl md:mb-2 mb-0 dark:text-gray-100 flex items-center increase">
             <GiHealthIncrease
               size="2.5rem"
-              color={selectedProvince.active_cases_change < 0 ? 'green' : 'red'}
+              color={activeCasesChange < 0 ? 'green' : 'red'}
             />
-            Changes from yesterday ({selectedProvince.active_cases_change})
+            Changes from yesterday ({activeCasesChange})
           </p>
         </div>
       </div>
@@ -28,7 +28,8 @@ const ActiveCasesCard = ({ selectedProvince }) => {
 };
 
 ActiveCasesCard.propTypes = {
-  selectedProvince: PropTypes.instanceOf(Object).isRequired,
+  activeCases: PropTypes.string.isRequired,
+  activeCasesChange: PropTypes.number.isRequired,
 };
 
 export default ActiveCasesCard;
