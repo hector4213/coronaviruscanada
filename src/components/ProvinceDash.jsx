@@ -28,8 +28,10 @@ const ProvinceDash = ({ code }) => {
         totalRecoveries={currentProvince.cumulative_recovered}
         totalDeaths={currentProvince.cumulative_deaths}
       />
-      {/* active cases card takes these props: active_cases, active_cases_change, should not acccept a whole object */}
-      <ActiveCasesCard selectedProvince={currentProvince} />
+      <ActiveCasesCard
+        activeCases={currentProvince.active_cases}
+        activeCasesChange={currentProvince.active_cases_change}
+      />
       <VaccinationInfoCard
         vaccinesToday={currentProvince.avaccine}
         totalVaccines={currentProvince.cumulative_avaccine}
