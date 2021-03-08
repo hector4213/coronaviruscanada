@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const baseURL = 'https://api.opencovid.ca/summary';
 const versionURL = 'https://api.opencovid.ca/version';
+const chartURL = 'https://api.opencovid.ca/timeseries';
 
 const getSummaries = async () => {
   const response = await axios.get(baseURL);
@@ -47,10 +48,22 @@ const getAPIVersion = async () => {
   const date = version.substring(0, 10);
   return date;
 };
+
+const getProvincesChartData = async (prov, userDate) => {
+  const response = await axios.get(chartURL, {
+    params: {
+      loc: prov,
+      date: userDate,
+    },
+  });
+  return response.data.cases.filter((item) => item.province !== 'Repatriated');
+};
+
 export default {
   getSummaries,
   getRegionSummary,
   getSummaryByDate,
   getProvinceSummary,
   getAPIVersion,
+  getProvincesChartData,
 };
