@@ -42,7 +42,7 @@ const Chart = () => {
   };
 
   useEffect(() => {
-    dispatch(getProvTrendsByDate('prov', '01-09-2020'));
+    dispatch(getProvTrendsByDate('prov', '01-09-2020')); //  fake Date, make dynamic
   }, []);
   return (
     <div>
