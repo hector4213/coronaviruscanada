@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import summaryReducer from './ducks/summary';
 import regionReducer from './ducks/regions';
 import appDataReducer from './ducks/info';
+import chartReducer from './ducks/chart';
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -15,6 +16,7 @@ const reducers = combineReducers({
   summaries: summaryReducer,
   regionSummaries: regionReducer,
   appData: appDataReducer,
+  chart: chartReducer,
 });
 
 const store = createStore(reducers, enhancer);
