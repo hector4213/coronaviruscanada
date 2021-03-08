@@ -9,18 +9,17 @@ export const fetchChartData = (data) => ({
 
 const initialState = {
   labels: [],
-  datasets: [
-    {
-      label: 'Active Cases',
-      data: [],
-    },
-  ],
+  data: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DATE_TRENDS: {
-      return { ...state };
+      return {
+        ...state,
+        labels: [...action.payload.map((item) => item.province)],
+        data: [...action.payload.map((item) => item.cumulative_cases)],
+      };
     }
     default: {
       return state;
