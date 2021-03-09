@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProvTrendsByDate } from './redux/ducks/chart';
 import Chart from './components/Charts/Chart';
-
 import ProvinceBtn from './components/Charts/ProvinceBtn';
 
 const Trends = () => {
