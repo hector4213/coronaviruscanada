@@ -16,7 +16,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="h-screen overflow-hidden">
       <Router>
         <Nav />
         <Switch>
