@@ -3,7 +3,7 @@ import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
   return (
-    <div>
+    <>
       <nav className="bg-white dark:bg-gray-800  shadow py-4 ">
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex items-center justify-between h-16">
@@ -127,7 +127,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-    </div>
+    </>
   );
 };
 
