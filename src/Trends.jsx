@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProvTrendsByDate } from './redux/ducks/chart';
+import { getVaccineStats } from './redux/ducks/chart';
 import Chart from './components/Charts/Chart';
 import ProvinceBtn from './components/Charts/ProvinceBtn';
 
@@ -10,7 +10,7 @@ const Trends = () => {
   const { apiLastUpdated } = useSelector((state) => state.appData);
 
   useEffect(() => {
-    dispatch(getProvTrendsByDate('prov', apiLastUpdated));
+    dispatch(getVaccineStats(apiLastUpdated));
   }, []);
 
   return (
