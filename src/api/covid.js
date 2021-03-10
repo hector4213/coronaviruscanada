@@ -59,6 +59,16 @@ const getProvincesChartData = async (prov, userDate) => {
   return response.data.cases.filter((item) => item.province !== 'Repatriated');
 };
 
+const getVaccinationData = async (prov, userDate, stat) => {
+  const response = await axios.get(chartURL, {
+    params: {
+      loc: prov,
+      date: userDate,
+      stat,
+    },
+  });
+};
+
 export default {
   getSummaries,
   getRegionSummary,
@@ -66,4 +76,5 @@ export default {
   getProvinceSummary,
   getAPIVersion,
   getProvincesChartData,
+  getVaccinationData,
 };
