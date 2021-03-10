@@ -2,10 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVaccineStats } from './redux/ducks/chart';
 import Chart from './components/Charts/Chart';
-import ProvinceBtn from './components/Charts/ProvinceBtn';
 
 const Trends = () => {
-  const chart = useSelector((state) => state.chart);
   const dispatch = useDispatch();
   const { apiLastUpdated } = useSelector((state) => state.appData);
 
@@ -19,11 +17,7 @@ const Trends = () => {
         <h1 className="text-center text-2xl p-6">
           Select a province to view chart data
         </h1>
-        <div className="grid grid-cols-3 gap-4">
-          {chart.labels.map((label) => (
-            <ProvinceBtn provinceName={label} />
-          ))}
-        </div>
+        <div className="grid grid-cols-3 gap-4">next chart here</div>
       </div>
       <div className="w-1/2">
         <h1 className="text-center text-3xl p-6">
