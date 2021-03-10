@@ -1,24 +1,23 @@
 import covidService from '../../api/covid';
 
-const FETCH_DATE_TRENDS = 'FETCH_DATE_TRENDS';
+const SET_VACCINE_DATA = 'SET_VACCINE_DATA';
 
-export const fetchChartData = (data) => ({
-  type: FETCH_DATE_TRENDS,
+export const setVaccineData = (data) => ({
+  type: SET_VACCINE_DATA,
   payload: data,
 });
 
 const initialState = {
-  labels: [],
   data: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_DATE_TRENDS: {
+    case SET_VACCINE_DATA: {
+      const { payload } = action;
       return {
         ...state,
-        labels: [...action.payload.map((item) => item.province)],
-        data: [...action.payload.map((item) => item.cumulative_cases)],
+        data: [payload[0].cumulative_avaccine, payload[1].cumulative_cvaccine],
       };
     }
     default: {
@@ -27,10 +26,23 @@ export default (state = initialState, action) => {
   }
 };
 
-export const getProvTrendsByDate = (prov, userDate) => async (dispatch) => {
+export const getVaccineStats = (userDate) => async (dispatch) => {
   try {
-    const trendData = await covidService.getProvincesChartData(prov, userDate);
-    dispatch(fetchChartData(trendData));
+    const totalVaccinated = covidService.getVaccinationData(
+      'canada',
+      userDate,
+      'avaccine',
+    );
+    const fullyVaccinated = covidService.getVaccinationData(
+      'canada',
+      userDate,
+      'cvaccine',
+    );
+
+    const responses = await Promise.all([totalVaccinated, fullyVaccinated]);
+    console.log(responses);
+
+    dispatch(setVaccineData(responses));
   } catch (error) {
     console.log(error);
   }
