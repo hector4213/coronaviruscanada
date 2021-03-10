@@ -67,6 +67,10 @@ const getVaccinationData = async (prov, userDate, stat) => {
       stat,
     },
   });
+  const stats = response.data[stat];
+  const [vaccineStat] = stats;
+
+  return vaccineStat;
 };
 
 export default {
