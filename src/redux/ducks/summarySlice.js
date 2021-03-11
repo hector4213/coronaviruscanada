@@ -29,14 +29,17 @@ const summariesSlice = createSlice({
   name: 'summaries',
   initialState,
   reducers: {
-    setTodayDate: (state, action) => {
-      state.currentDate = action.payload;
+    setTodayDate: (state, { payload }) => {
+      state.currentDate = payload;
     },
   },
   extraReducers: {
-    [getTodaySummaries.fulfilled]: (state, action) => {
-      state.today = state.today.concat(action.payload);
+    [getTodaySummaries.fulfilled]: (state, { payload }) => {
+      state.today = state.today.concat(payload);
       state.isLoading = false;
+    },
+    [getProvinceSummary.fufilled]: (state, { payload }) => {
+      state.currentProvince = payload;
     },
   },
 });
