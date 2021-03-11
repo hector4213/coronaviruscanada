@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fetchVersionDate } from './redux/ducks/info';
+import { getVersionDate } from './redux/ducks/infoSlice';
 import './App.css';
 import Nav from './components/Nav';
 import Home from './Home';
@@ -12,7 +12,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchVersionDate());
+    dispatch(getVersionDate());
   }, []);
 
   return (
