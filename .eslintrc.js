@@ -8,7 +8,7 @@ module.exports = {
     node: true,
   },
   rules: {
-    "camelcase": ["off"], //fix this fkn camel case shit, start province details and a selection on individual health regions
+    camelcase: ['off'],
     'jsx-a11y/href-no-hash': ['off'],
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
     'react/react-in-jsx-scope': ['off'],
@@ -24,6 +24,13 @@ module.exports = {
         ignoreStrings: true,
         ignoreTemplateLiterals: true,
         ignoreRegExpLiterals: true,
+      },
+    ],
+    'no-param-reassign': [
+      'error',
+      {
+        props: true,
+        ignorePropertyModificationsFor: ['state'],
       },
     ],
   },
