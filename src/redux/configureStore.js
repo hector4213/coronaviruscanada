@@ -5,6 +5,6 @@ import infoSlice from './ducks/infoSlice';
 export default configureStore({
   reducer: {
     summaries: summarySlice,
-    info: infoSlice,
+    appData: infoSlice,
   },
 });
