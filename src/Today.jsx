@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTodaySummary } from './redux/ducks/summary';
+import { getTodaySummaries } from './redux/ducks/summarySlice';
 import ProvinceCard from './components/ProvinceCard';
 import ProvinceDash from './components/ProvinceDash';
 import AB from './assets/provinces/ab.png';
@@ -41,7 +41,9 @@ const Provinces = () => {
   const { isLoading, today } = provinceGrid;
 
   useEffect(() => {
-    dispatch(fetchTodaySummary());
+    if (today.length < 1) {
+      dispatch(getTodaySummaries());
+    }
   }, []);
 
   if (isLoading) {
