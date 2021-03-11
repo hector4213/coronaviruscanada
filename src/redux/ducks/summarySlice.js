@@ -11,15 +11,15 @@ export const getTodaySummaries = createAsyncThunk(
 
 export const getProvinceSummary = createAsyncThunk(
   'summaries/getProvinceSummary',
-  async (code, date) => {
-    const provData = await covidService.getProvinceSummary(code, date);
+  async (provCode, userDate) => {
+    const provData = await covidService.getProvinceSummary(provCode, userDate);
     return provData;
   },
 );
 
 const initialState = {
   summaries: [],
-  currentProvince: '',
+  currentProvince: null,
   isLoading: true,
   currentDate: '',
   today: [],
@@ -38,7 +38,7 @@ const summariesSlice = createSlice({
       state.today = state.today.concat(payload);
       state.isLoading = false;
     },
-    [getProvinceSummary.fufilled]: (state, { payload }) => {
+    [getProvinceSummary.fulfilled]: (state, { payload }) => {
       state.currentProvince = payload;
     },
   },
