@@ -10,7 +10,7 @@ const getSummaries = async () => {
   return summary;
 };
 
-const getRegionSummary = async (provinceCode, userDate = '') => {
+const getRegionSummary = async (provinceCode, userDate) => {
   const response = await axios.get(baseURL, {
     params: {
       loc: provinceCode,
@@ -31,7 +31,7 @@ const getSummaryByDate = async (userDate) => {
   return response.data.summary;
 };
 
-const getProvinceSummary = async (provCode, userDate = '') => {
+const getProvinceSummary = async (provCode, userDate) => {
   const response = await axios.get(baseURL, {
     params: {
       loc: provCode,
