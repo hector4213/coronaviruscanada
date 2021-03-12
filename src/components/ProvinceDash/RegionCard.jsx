@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { FaBriefcaseMedical, FaRegSadCry } from 'react-icons/fa';
 import { GiDeathSkull, GiPlagueDoctorProfile } from 'react-icons/gi';
 import { CgCloseO } from 'react-icons/cg';
-import { clearRegionSummary } from '../../redux/ducks/regions';
+import { clearRegionSummary } from '../../redux/ducks/regionSlice';
 
 const RegionCard = ({ data }) => {
   const {
