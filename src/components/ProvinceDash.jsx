@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProvinceSummary } from '../redux/ducks/summary';
+import { getProvinceSummary } from '../redux/ducks/summarySlice';
 import ActiveCasesCard from './ProvinceDash/ActiveCasesCard';
 import VaccinationInfoCard from './ProvinceDash/VaccinationInfoCard';
 import RecoveriesDeath from './ProvinceDash/RecoveriesDeath';
@@ -9,13 +9,15 @@ import TestingCard from './ProvinceDash/TestingCard';
 import ProvinceDetails from './ProvinceDash/ProvinceDetails';
 
 const ProvinceDash = ({ code }) => {
-  const provinceData = useSelector((state) => state.summaries);
-  const { currentProvince, currentDate } = provinceData;
+  const { currentProvince, currentDate } = useSelector(
+    (state) => state.summaries,
+  );
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProvinceSummary(code, currentDate));
-  }, []);
+    dispatch(getProvinceSummary({ provCode: code, userDate: currentDate }));
+  }, [currentDate]);
 
   if (!currentProvince) {
     return null;
