@@ -18,8 +18,7 @@ export const getVaccineData = createAsyncThunk(
 );
 
 const initialState = {
-  data: null,
-  canPopulation: 37589262,
+  stats: null,
 };
 
 const vaccineChartSlice = createSlice({
@@ -28,7 +27,7 @@ const vaccineChartSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getVaccineData.fulfilled]: (state, { payload }) => {
-      state.data = payload;
+      state.stats = payload;
     },
   },
 });
