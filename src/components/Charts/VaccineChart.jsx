@@ -2,18 +2,18 @@ import { useSelector } from 'react-redux';
 import { Pie } from 'react-chartjs-2';
 
 const VaccineChart = () => {
-  const { data: chartData } = useSelector((state) => state.vaccineData);
+  const { stats } = useSelector((state) => state.vaccineData);
 
   const data = {
     labels: ['Vaccinated', 'Fully Vaccinated', 'Unvaccinated'],
     datasets: [
       {
         label: ['Vacc data'],
-        data: chartData,
+        data: stats,
         backgroundColor: [
-          'rgba(0, 255, 128, 0.5)',
-          'rgba(77, 201, 246, 0.5)',
-          'rgba(255, 128, 0, 0.5)',
+          'rgba(65,105,225, 0.5)',
+          'rgba(0, 255, 0, 0.5)',
+          'rgba(255, 0, 0, 0.5)',
         ],
         borderColor: [
           'rgb(0, 255, 128)',
