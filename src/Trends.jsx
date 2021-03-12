@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVaccineStats } from './redux/ducks/chart';
+import { getVaccineData } from './redux/ducks/vaccineChartSlice';
 import VaccineChart from './components/Charts/VaccineChart';
 
 const Trends = () => {
@@ -8,8 +8,10 @@ const Trends = () => {
   const { apiLastUpdated } = useSelector((state) => state.appData);
 
   useEffect(() => {
-    dispatch(getVaccineStats(apiLastUpdated));
-  }, []);
+    if (apiLastUpdated) {
+      dispatch(getVaccineData(apiLastUpdated));
+    }
+  }, [apiLastUpdated]);
 
   return (
     <div className="flex justify-between py-4 px-4 bg-gray-100 h-full">
