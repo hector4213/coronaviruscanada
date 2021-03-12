@@ -49,10 +49,10 @@ const getAPIVersion = async () => {
   return date;
 };
 
-const getVaccinationData = async (prov, userDate, stat) => {
+const getVaccinationData = async (userDate, stat) => {
   const response = await axios.get(chartURL, {
     params: {
-      loc: prov,
+      loc: 'canada',
       date: userDate,
       stat,
     },
