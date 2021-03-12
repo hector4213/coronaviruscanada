@@ -3,8 +3,11 @@ import covidService from '../../api/covid';
 
 export const getRegionSummary = createAsyncThunk(
   'regions/getRegionSummary',
-  async (provCode, userDate) => {
-    const regionData = await covidService.getRegionSummary(provCode, userDate);
+  async ({ regionCode, userDate }) => {
+    const regionData = await covidService.getRegionSummary(
+      regionCode,
+      userDate,
+    );
     return regionData;
   },
 );
@@ -33,6 +36,7 @@ const regionSlice = createSlice({
   extraReducers: {
     [getRegionSummary.fulfilled]: (state, { payload }) => {
       state.regionData = payload;
+      state.hasSelected = true;
     },
   },
 });
