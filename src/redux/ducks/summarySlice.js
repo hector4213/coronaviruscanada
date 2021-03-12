@@ -11,7 +11,8 @@ export const getTodaySummaries = createAsyncThunk(
 
 export const getProvinceSummary = createAsyncThunk(
   'summaries/getProvinceSummary',
-  async (provCode, userDate) => {
+  async ({ provCode, userDate }) => {
+    console.log(provCode, userDate);
     const provData = await covidService.getProvinceSummary(provCode, userDate);
     return provData;
   },
