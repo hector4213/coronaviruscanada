@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTodayDate, fetchProvinceSummary } from '../../redux/ducks/summary';
-import { userHasSelected, regionSelect } from '../../redux/ducks/regions';
+import { setTodayDate } from '../../redux/ducks/summarySlice';
+import { clearRegionSummary } from '../../redux/ducks/regionSlice';
 import HealthRegionList from './HealthRegionList';
 
 const ProvinceDetails = ({ province, code }) => {
@@ -11,15 +11,13 @@ const ProvinceDetails = ({ province, code }) => {
     (state) => state.appData,
   );
   const dispatch = useDispatch();
-
+  console.log(code); //  this prop can be delete?
   const handleDateChange = (e) => {
     dispatch(setTodayDate(e.target.value));
-    dispatch(fetchProvinceSummary(code, e.target.value));
   };
 
   const resetRegionCard = () => {
-    dispatch(userHasSelected(false));
-    dispatch(regionSelect(''));
+    dispatch(clearRegionSummary());
   };
 
   useEffect(() => {
