@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getVersionDate } from './redux/ducks/infoSlice';
+import { setTodayDate } from './redux/ducks/summarySlice';
 import './App.css';
 import Nav from './components/Nav';
 import Home from './Home';
@@ -10,13 +11,18 @@ import Trends from './Trends';
 
 const App = () => {
   const dispatch = useDispatch();
+  const { apiLastUpdated } = useSelector((state) => state.appData);
 
   useEffect(() => {
-    dispatch(getVersionDate());
-  }, []);
+    if (!apiLastUpdated) {
+      dispatch(getVersionDate());
+    } else {
+      dispatch(setTodayDate(apiLastUpdated));
+    }
+  }, [apiLastUpdated]);
 
   return (
-    <div className="h-screen overflow-hidden">
+    <div className="h-screen">
       <Router>
         <Nav />
         <Switch>
