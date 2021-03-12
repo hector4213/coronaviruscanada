@@ -14,7 +14,6 @@ export const getRegionSummary = createAsyncThunk(
 
 const initialState = {
   regionData: null,
-  hasSelected: false,
   selectedRegion: '',
 };
 
@@ -23,8 +22,8 @@ const regionSlice = createSlice({
   initialState,
   reducers: {
     clearRegionSummary: (state) => {
-      state.hasSelected = false;
       state.regionData = null;
+      state.selectedRegion = null;
     },
     regionSelect: (state, { payload }) => {
       state.selectedRegion = payload;
@@ -36,7 +35,6 @@ const regionSlice = createSlice({
   extraReducers: {
     [getRegionSummary.fulfilled]: (state, { payload }) => {
       state.regionData = payload;
-      state.hasSelected = true;
     },
   },
 });
