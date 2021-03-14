@@ -63,6 +63,16 @@ const getVaccinationData = async (userDate, stat) => {
   return vaccineStat;
 };
 
+const getWeeklySummary = async (before, after) => {
+  const response = await axios.get(baseURL, {
+    params: {
+      before,
+      after,
+    },
+  });
+  return response.data.summary;
+};
+
 export default {
   getSummaries,
   getRegionSummary,
@@ -70,4 +80,5 @@ export default {
   getProvinceSummary,
   getAPIVersion,
   getVaccinationData,
+  getWeeklySummary,
 };
