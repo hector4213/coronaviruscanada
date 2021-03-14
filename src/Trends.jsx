@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVaccineData } from './redux/ducks/vaccineChartSlice';
 import VaccineChart from './components/Charts/VaccineChart';
+import CasesChart from './components/Charts/CasesChart';
 
 const Trends = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ const Trends = () => {
         <h1 className="text-center text-2xl p-6">
           Select a province to view chart data
         </h1>
-        <div className="grid grid-cols-3 gap-4">next chart here</div>
+        <div className="">
+          <CasesChart />
+        </div>
       </div>
       <div className="w-1/2">
         <VaccineChart />
