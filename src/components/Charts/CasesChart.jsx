@@ -1,15 +1,30 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
+import { getWeekSummaryCanada } from '../../redux/ducks/casesChartSlice';
 
 const CasesChart = () => {
+  const { vaccinations, cases, deaths, dates } = useSelector(
+    (state) => state.casesData,
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (!vaccinations || !deaths || !cases) {
+      dispatch(
+        getWeekSummaryCanada({ before: '13-03-2021', after: '01-01-2021' }),
+      );
+    }
+  }, []);
+
   const data = {
-    labels: ['1', '2', '3'],
+    labels: dates,
     datasets: [
       {
         label: 'Vaccinations',
         fill: false,
         backgroundColor: 'rgb(0, 255, 128)',
         borderColor: 'rgba(0, 255, 128, 0.75)',
-        data: null,
+        data: vaccinations,
       },
       {
         label: 'Cases',
@@ -17,14 +32,14 @@ const CasesChart = () => {
         backgroundColor: 'rgb(255, 128, 0)',
         borderColor: 'rgba(255, 128, 0, 0.75)',
         borderDash: [5, 5],
-        data: null,
+        data: cases,
       },
       {
         label: 'Deaths',
         fill: true,
         backgroundColor: 'rgba(77, 201, 246, 0.5)',
         borderColor: '#4dc9f6',
-        data: null,
+        data: deaths,
       },
     ],
   };
