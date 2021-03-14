@@ -66,6 +66,7 @@ const getVaccinationData = async (userDate, stat) => {
 const getWeeklySummary = async (before, after) => {
   const response = await axios.get(baseURL, {
     params: {
+      loc: 'canada',
       before,
       after,
     },
