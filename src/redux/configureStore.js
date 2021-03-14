@@ -3,6 +3,7 @@ import summarySlice from './ducks/summarySlice';
 import infoSlice from './ducks/infoSlice';
 import regionSlice from './ducks/regionSlice';
 import vaccineChartSlice from './ducks/vaccineChartSlice';
+import casesChartSlice from './ducks/casesChartSlice';
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     regionSummaries: regionSlice,
     appData: infoSlice,
     vaccineData: vaccineChartSlice,
+    casesData: casesChartSlice,
   },
 });
