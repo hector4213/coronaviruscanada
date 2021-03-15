@@ -3,7 +3,6 @@ import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWeekSummaryCanada } from '../../redux/ducks/casesChartSlice';
-
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
