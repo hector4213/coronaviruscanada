@@ -44,10 +44,21 @@ const CasesChart = () => {
       },
     ],
   };
+  const OPTIONS = {
+    title: {
+      display: true,
+      text: 'Vaccinations, Cases, Deaths',
+      padding: 0,
+      fontSize: 18.5,
+    },
+    maintainAspectRatio: false,
+  };
   return (
     <div className="flex flex-col items-center">
       <DatePicker />
-      <Line data={data} width={100} height={50} options={{}} />
+      <article className="h-80 w-80">
+        <Line data={data} options={OPTIONS} />
+      </article>
     </div>
   );
 };
