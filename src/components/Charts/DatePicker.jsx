@@ -33,6 +33,10 @@ const DatePicker = () => {
     setDates([item.selection]);
   };
 
+  if (!apiStartDate || !apiLastUpdated) {
+    return null;
+  }
+
   return (
     <div>
       <DateRange

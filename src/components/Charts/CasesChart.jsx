@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 import { getWeekSummaryCanada } from '../../redux/ducks/casesChartSlice';
+import DatePicker from './DatePicker';
 
 const CasesChart = () => {
   const { vaccinations, cases, deaths, dates } = useSelector(
@@ -44,7 +45,8 @@ const CasesChart = () => {
     ],
   };
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <DatePicker />
       <Line data={data} width={100} height={50} options={{}} />
     </div>
   );
