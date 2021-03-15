@@ -32,10 +32,11 @@ const VaccineChart = () => {
       padding: 0,
       fontSize: 18.5,
     },
+    maintainAspectRatio: false,
   };
   return (
-    <div>
-      <Pie data={data} width={100} height={50} options={OPTIONS} />
+    <div className="h-80 w-80">
+      <Pie data={data} options={OPTIONS} />
     </div>
   );
 };
