@@ -15,17 +15,12 @@ const Trends = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="flex justify-between py-4 px-4 bg-gray-100 h-full">
-      <div className="w-1/2">
-        <h1 className="text-center text-2xl p-6">
-          Select a province to view chart data
-        </h1>
-        <div className="">
-          <CasesChart />
-        </div>
-      </div>
-      <div className="w-1/2">
+    <div className="flex flex-col justify-around items-center py-4 px-4 bg-gray-100 h-full">
+      <div className="flex justify-center items-center">
         <VaccineChart />
+      </div>
+      <div className="">
+        <CasesChart />
       </div>
     </div>
   );
