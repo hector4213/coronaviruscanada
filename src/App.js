@@ -22,7 +22,7 @@ const App = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <Router>
         <Nav />
         <Switch>
