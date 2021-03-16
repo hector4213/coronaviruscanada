@@ -12,7 +12,7 @@ const CanadaStats = () => {
       <div className="px-4 py-5 sm:p-6">
         <dl>
           <dt className="text-sm leading-5 font-medium text-gray-500 truncate">
-            Population
+            Population Of Canada
           </dt>
           <dd className="mt-1 text-3xl leading-9 font-semibold text-gray-900">
             37589262
