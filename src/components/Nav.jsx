@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
+  const [navOpen, setNavOpen] = useState(false);
   return (
     <>
       <nav className="bg-white dark:bg-gray-800  shadow py-4 ">
@@ -65,6 +67,7 @@ const Header = () => {
               <button
                 type="button"
                 className="text-gray-800 dark:text-white hover:text-gray-300 inline-flex items-center justify-center p-2 rounded-md focus:outline-none"
+                onClick={() => setNavOpen(!navOpen)}
               >
                 <svg
                   width="20"
@@ -106,24 +109,6 @@ const Header = () => {
             >
               Contact
             </a>
-          </div>
-          <div className="p-2 flex">
-            <form className="flex w-full max-w-sm space-x-3">
-              <div className=" relative ">
-                <input
-                  type="text"
-                  id='"form-subscribe-Search'
-                  className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                  placeholder="components"
-                />
-              </div>
-              <button
-                className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-purple-600 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </nav>
