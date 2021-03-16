@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 const ProvinceCard = ({ name, logo, province, path }) => {
   const { url } = useRouteMatch();
   return (
-    <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto">
+    <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto xs:mt-3">
       <Link to={`${url}${path}`} className="w-full block h-full">
         <img
           alt="province"
@@ -14,9 +14,6 @@ const ProvinceCard = ({ name, logo, province, path }) => {
         <div className="bg-white dark:bg-gray-800 w-full p-4">
           <p className="text-gray-800 dark:text-white text-xl font-medium mb-2">
             {name}
-          </p>
-          <p className="text-gray-400 dark:text-gray-300 font-light text-md">
-            some text
           </p>
           <div className="flex flex-wrap justify-starts items-center mt-4">
             <div className="text-xs mr-2 py-1.5 px-4 mt-2 text-gray-100 bg-green-600 rounded-2xl">
