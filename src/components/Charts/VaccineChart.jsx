@@ -30,12 +30,12 @@ const VaccineChart = () => {
       display: true,
       text: 'Canadian Vaccinations',
       padding: 0,
-      fontSize: 18.5,
+      fontSize: 25,
     },
     maintainAspectRatio: false,
   };
   return (
-    <div className="h-80 w-80">
+    <div className="h-80 w-full bg-white p-6 shadow-xl rounded-lg md:w-full md:h-1/2">
       <Pie data={data} options={OPTIONS} />
     </div>
   );
