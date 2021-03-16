@@ -15,11 +15,11 @@ const Trends = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="flex flex-col justify-around items-center py-4 px-4 bg-gray-100 h-full">
-      <div className="flex justify-center items-center">
+    <div className="flex flex-col justify-around items-center py-4 px-4 bg-gray-100 min-h-screen lg:flex-row ">
+      <div className="flex justify-center w-full my-1 mx-1 md:w-1/2 md:h-screen">
         <VaccineChart />
       </div>
-      <div className="">
+      <div className="md:w-1/2 md:h-screen md:flex justify-center my-1 mx-1">
         <CasesChart />
       </div>
     </div>
