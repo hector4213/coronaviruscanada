@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVersionDate } from './redux/ducks/infoSlice';
 import { setTodayDate } from './redux/ducks/summarySlice';
-import './App.css';
 import Nav from './components/Nav';
 import Home from './Home';
 import Today from './Today';
