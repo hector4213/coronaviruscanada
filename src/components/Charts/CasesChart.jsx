@@ -49,14 +49,15 @@ const CasesChart = () => {
       display: true,
       text: 'Vaccinations, Cases, Deaths',
       padding: 0,
-      fontSize: 18.5,
+      fontSize: 25,
     },
     maintainAspectRatio: false,
   };
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center justify-evenly bg-white shadow-xl rounded-lg  md:w-full md:min-h-screen">
+      <h1>Select a date</h1>
       <DatePicker />
-      <article className="h-80 w-80">
+      <article className="h-80 w-80 md:w-full md:h-1/2">
         <Line data={data} options={OPTIONS} />
       </article>
     </div>
