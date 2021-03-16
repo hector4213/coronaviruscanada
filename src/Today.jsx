@@ -51,18 +51,20 @@ const Provinces = () => {
   }
 
   return (
-    <div className="container mt-5 mx-auto">
-      <Route exact path={`${path}`}>
-        {PROVINCES.map((prov) => (
-          <ProvinceCard
-            key={prov.id}
-            name={prov.name}
-            logo={prov.img}
-            province={today.find((item) => item.province === prov.name)}
-            path={prov.path}
-          />
-        ))}
-      </Route>
+    <div className="container mt-5 p-5 mx-auto">
+      <div className="md:grid md:grid-cols-3 lg:grid-cols-4">
+        <Route exact path={`${path}`}>
+          {PROVINCES.map((prov) => (
+            <ProvinceCard
+              key={prov.id}
+              name={prov.name}
+              logo={prov.img}
+              province={today.find((item) => item.province === prov.name)}
+              path={prov.path}
+            />
+          ))}
+        </Route>
+      </div>
       {PROVINCES.map((prov) => (
         <Route path={`${path}${prov.path}`} key={prov.id}>
           <ProvinceDash code={prov.code} />
