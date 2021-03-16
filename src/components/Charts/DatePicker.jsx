@@ -38,16 +38,16 @@ const DatePicker = () => {
   }
 
   return (
-    <div>
+    <>
       <DateRange
-        editableDateInputs={() => true}
+        editableDateInputs
         onChange={onDateChange}
         moveRangeOnFirstSelection={false}
         ranges={dates}
         maxDate={new Date(apiLastUpdated.replace(/-/g, '/'))}
         minDate={new Date(apiStartDate.replace(/-/g, '/'))}
       />
-    </div>
+    </>
   );
 };
 

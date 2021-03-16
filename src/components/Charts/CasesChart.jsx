@@ -54,10 +54,12 @@ const CasesChart = () => {
     maintainAspectRatio: false,
   };
   return (
-    <div className="flex flex-col items-center justify-evenly bg-white shadow-xl rounded-lg  md:w-full md:min-h-screen">
-      <h1>Select a date</h1>
-      <DatePicker />
-      <article className="h-80 w-80 md:w-full md:h-1/2">
+    <div className="flex flex-col  md:w-full md:min-h-screen">
+      <div className="bg-white shadow-xl rounded-lg w-full text-center">
+        <h1>Select a date</h1>
+        <DatePicker />
+      </div>
+      <article className="h-80 w-full mt-3 p-3 bg-white shadow-xl rounded-lg  md:h-1/2">
         <Line data={data} options={OPTIONS} />
       </article>
     </div>

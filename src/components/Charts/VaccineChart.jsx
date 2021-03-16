@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Pie } from 'react-chartjs-2';
+import CanadaStats from './CanadaStats';
 
 const VaccineChart = () => {
   const { stats } = useSelector((state) => state.vaccineData);
@@ -35,8 +36,11 @@ const VaccineChart = () => {
     maintainAspectRatio: false,
   };
   return (
-    <div className="h-80 w-full bg-white p-6 shadow-xl rounded-lg md:w-full md:h-1/2">
-      <Pie data={data} options={OPTIONS} />
+    <div className="h-1/2 w-full md:w-full md:h-1/2">
+      <CanadaStats />
+      <div className="h-80 w-full bg-white p-6 shadow-xl rounded-lg mt-3">
+        <Pie data={data} options={OPTIONS} />
+      </div>
     </div>
   );
 };

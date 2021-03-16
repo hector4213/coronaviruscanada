@@ -1,8 +1,10 @@
 import { SiAircanada } from 'react-icons/si';
+import { useSelector } from 'react-redux';
 
 const CanadaStats = () => {
+  const { apiLastUpdated } = useSelector((state) => state.appData);
   return (
-    <div className="bg-white  overflow-hidden shadow rounded-lg w-60 md:w-72 relative">
+    <div className="bg-white  overflow-hidden shadow rounded-lg w-full md:w-full relative">
       <SiAircanada
         alt="canada logo"
         className="h-24 w-24 rounded-full absolute opacity-50 -top-6 -right-6 md:-right-4"
@@ -13,10 +15,10 @@ const CanadaStats = () => {
             Population
           </dt>
           <dd className="mt-1 text-3xl leading-9 font-semibold text-gray-900">
-            10,0000000
+            37589262
           </dd>
           <dd className="text-gray-500 font-semibold">
-            <span>Last Updated: 2020,1,20</span>
+            <span>Last Updated: {apiLastUpdated}</span>
           </dd>
         </dl>
       </div>
