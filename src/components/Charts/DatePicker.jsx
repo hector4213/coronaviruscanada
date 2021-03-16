@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { DateRange } from 'react-date-range';
+import { DateRangePicker } from 'react-date-range';
 import { format } from 'date-fns';
 import { useSelector, useDispatch } from 'react-redux';
 import { getWeekSummaryCanada } from '../../redux/ducks/casesChartSlice';
@@ -39,7 +39,7 @@ const DatePicker = () => {
 
   return (
     <>
-      <DateRange
+      <DateRangePicker
         editableDateInputs
         onChange={onDateChange}
         moveRangeOnFirstSelection={false}
