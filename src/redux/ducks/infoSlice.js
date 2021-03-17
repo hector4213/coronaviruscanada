@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import covidService from '../../api/covid';
+import fireApi from '../../firebase/fireApi';
 
 export const getVersionDate = createAsyncThunk(
   'info/getVersionDate',
@@ -9,9 +10,18 @@ export const getVersionDate = createAsyncThunk(
   },
 );
 
+export const getAppProvinces = createAsyncThunk(
+  'info/getAppProvinces',
+  async () => {
+    const appProvinces = await fireApi.fetchAppProvinces();
+    return appProvinces;
+  },
+);
+
 const initialState = {
   apiLastUpdated: '',
   apiStartDate: '2020-09-01',
+  provinceData: [],
 };
 
 const infoSlice = createSlice({
@@ -21,6 +31,9 @@ const infoSlice = createSlice({
   extraReducers: {
     [getVersionDate.fulfilled]: (state, { payload }) => {
       state.apiLastUpdated = payload;
+    },
+    [getAppProvinces.fulfilled]: (state, { payload }) => {
+      state.provinceData = payload;
     },
   },
 });
