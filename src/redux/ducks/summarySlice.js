@@ -22,7 +22,7 @@ const initialState = {
   currentProvince: null,
   isLoading: true,
   currentDate: '',
-  today: [],
+  today: null,
 };
 
 const summariesSlice = createSlice({
@@ -35,7 +35,7 @@ const summariesSlice = createSlice({
   },
   extraReducers: {
     [getTodaySummaries.fulfilled]: (state, { payload }) => {
-      state.today = state.today.concat(payload);
+      state.today = payload;
       state.isLoading = false;
     },
     [getProvinceSummary.fulfilled]: (state, { payload }) => {
