@@ -18,6 +18,14 @@ export const getAppProvinces = createAsyncThunk(
   },
 );
 
+// export const getAppRegions = () => {
+//   'info/getAppRegions',
+//   async() => {
+//     const appRegions = await fireApi.fetchAppRegions();
+//     return appRegions
+//   }
+// }
+
 const initialState = {
   apiLastUpdated: '',
   apiStartDate: '2020-09-01',
