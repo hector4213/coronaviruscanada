@@ -27,7 +27,7 @@ const Provinces = () => {
   if (isLoading) {
     return null; //   loader here state is false if data loaded
   }
-  console.log(provinceData);
+
   return (
     <div className="container mt-5 p-5 mx-auto">
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
