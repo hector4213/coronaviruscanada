@@ -47,7 +47,7 @@ const getAPIVersion = async () => {
   return date;
 };
 
-//  Fetches summary for todays date of canadas vaccination progress
+//  Fetches summary for todays date of canadas vaccination progress (user does not change)
 
 const getVaccinationData = async (userDate, stat) => {
   const response = await axios.get(chartURL, {
@@ -63,14 +63,17 @@ const getVaccinationData = async (userDate, stat) => {
   return vaccineStat;
 };
 
-const getVaccStatsistic = async(date, stat) => {
-  const response = await axios.get(baseURL. {
+//  Fetches stat provided for province, this case will use vaccines delivered and vaccine administered
+
+const getVaccStats = async (date, stat) => {
+  const response = await axios.get(baseURL, {
     params: {
       date,
       stat,
-    }
-  })
-}
+    },
+  });
+  return response.data;
+};
 
 // Fetches an array of data for cases chart with user provided date range
 
@@ -88,9 +91,9 @@ const getWeeklySummary = async (before, after) => {
 export default {
   getSummaries,
   getRegionSummary,
-  getSummaryByDate,
   getProvinceSummary,
   getAPIVersion,
   getVaccinationData,
   getWeeklySummary,
+  getVaccStats,
 };
