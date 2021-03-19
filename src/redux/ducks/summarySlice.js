@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import covidService from '../../api/covid';
+import fireApi from '../../firebase/fireApi';
 
 export const getTodaySummaries = createAsyncThunk(
   'summaries/getTodaySummaries',
@@ -17,12 +18,20 @@ export const getProvinceSummary = createAsyncThunk(
   },
 );
 
+export const getAppRegions = createAsyncThunk(
+  'info/getAppRegions',
+  async (province) => {
+    const appRegions = await fireApi.fetchAppRegions(province);
+    return appRegions;
+  },
+);
+
 const initialState = {
-  summaries: [],
   currentProvince: null,
   isLoading: true,
   currentDate: '',
   today: null,
+  provinceRegions: [],
 };
 
 const summariesSlice = createSlice({
@@ -40,6 +49,9 @@ const summariesSlice = createSlice({
     },
     [getProvinceSummary.fulfilled]: (state, { payload }) => {
       state.currentProvince = payload;
+    },
+    [getAppRegions.fulfilled]: (state, { payload }) => {
+      state.provinceRegions = payload;
     },
   },
 });
