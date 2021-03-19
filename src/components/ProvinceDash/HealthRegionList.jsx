@@ -2,16 +2,22 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getRegionSummary, regionSelect } from '../../redux/ducks/regionSlice';
-import regions from '../../assets/static/healthregions';
+import { getAppRegions } from '../../redux/ducks/summarySlice';
 import RegionCard from './RegionCard';
 
 const HealthRegionList = ({ province }) => {
-  const provinceRegion = useSelector((state) => state.regionSummaries);
-  const currentDate = useSelector((state) => state.summaries.currentDate);
-  const { regionData, selectedRegion } = provinceRegion;
+  const { regionData, selectedRegion } = useSelector(
+    (state) => state.regionSummaries,
+  );
+  const { currentDate, provinceRegions } = useSelector(
+    (state) => state.summaries,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (provinceRegions.length < 1) {
+      dispatch(getAppRegions(province));
+    }
     if (selectedRegion) {
       dispatch(
         getRegionSummary({ regionCode: selectedRegion, userDate: currentDate }),
@@ -29,7 +35,7 @@ const HealthRegionList = ({ province }) => {
           className="text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
           name="regions"
         >
-          {regions[province].map((prov) => (
+          {provinceRegions.map((prov) => (
             <option key={prov.code} value={prov.code}>
               {prov.region}
             </option>
