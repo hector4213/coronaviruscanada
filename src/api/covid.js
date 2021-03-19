@@ -4,11 +4,15 @@ const baseURL = 'https://api.opencovid.ca/summary';
 const versionURL = 'https://api.opencovid.ca/version';
 const chartURL = 'https://api.opencovid.ca/timeseries';
 
+//  Fetches summaries for date of today for card grid data
+
 const getSummaries = async () => {
   const response = await axios.get(baseURL);
   const { summary } = response.data;
   return summary;
 };
+
+//  Fetches Summary for region with provided date
 
 const getRegionSummary = async (regionCode, userDate) => {
   const response = await axios.get(baseURL, {
@@ -21,15 +25,7 @@ const getRegionSummary = async (regionCode, userDate) => {
   return regionSummary;
 };
 
-const getSummaryByDate = async (userDate) => {
-  const response = await axios.get(baseURL, {
-    params: {
-      date: userDate,
-    },
-  });
-
-  return response.data.summary;
-};
+//  Fetches individual province summary
 
 const getProvinceSummary = async (provCode, userDate) => {
   const response = await axios.get(baseURL, {
@@ -42,12 +38,16 @@ const getProvinceSummary = async (provCode, userDate) => {
   return provinceSummary;
 };
 
+// Fetches date when API was last updated
+
 const getAPIVersion = async () => {
   const response = await axios.get(versionURL);
   const { version } = response.data;
   const date = version.substring(0, 10);
   return date;
 };
+
+//  Fetches summary for todays date of canadas vaccination progress
 
 const getVaccinationData = async (userDate, stat) => {
   const response = await axios.get(chartURL, {
@@ -62,6 +62,17 @@ const getVaccinationData = async (userDate, stat) => {
 
   return vaccineStat;
 };
+
+const getVaccStatsistic = async(date, stat) => {
+  const response = await axios.get(baseURL. {
+    params: {
+      date,
+      stat,
+    }
+  })
+}
+
+// Fetches an array of data for cases chart with user provided date range
 
 const getWeeklySummary = async (before, after) => {
   const response = await axios.get(baseURL, {
