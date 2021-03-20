@@ -48,9 +48,11 @@ const ProvinceChart = () => {
     maintainAspectRatio: false,
   };
   return (
-    <div className="bg-white shadow-xl rounded-lg text-center">
-      <input type="date" min={apiStartDate} max={apiLastUpdated} />
-      <div className="h-96 w-80 md:w-full">
+    <div className="bg-white shadow-xl rounded-lg text-center mt-3">
+      <div className="p-3">
+        <input type="date" min={apiStartDate} max={apiLastUpdated} />
+      </div>
+      <div className="h-72 p-7 w-full">
         <Line data={data} options={OPTIONS} />
       </div>
     </div>

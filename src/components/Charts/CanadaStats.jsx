@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 const CanadaStats = () => {
   const { apiLastUpdated } = useSelector((state) => state.appData);
   return (
-    <div className="bg-white  overflow-hidden shadow rounded-lg w-full md:w-full relative">
+    <div className="h-auto bg-white  overflow-hidden shadow rounded-lg w-full relative">
       <SiAircanada
         alt="canada logo"
         className="h-24 w-24 rounded-full absolute opacity-50 -top-6 -right-6 md:-right-4"
