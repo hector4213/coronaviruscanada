@@ -35,7 +35,7 @@ const VaccineChart = () => {
     maintainAspectRatio: false,
   };
   return (
-    <div className="h-1/2 w-full md:w-full md:h-1/2">
+    <div className="h-full w-full md:w-full">
       <div className="h-80 w-full bg-white p-6 shadow-xl rounded-lg mt-3">
         <Pie data={data} options={OPTIONS} />
       </div>
