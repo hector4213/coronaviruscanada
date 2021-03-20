@@ -1,5 +1,11 @@
+import Loader from './components/Loader';
+
 const Home = () => {
-  return <h1>Welcome, this uses the OpenCovidApi</h1>;
+  return (
+    <div>
+      <Loader />;
+    </div>
+  );
 };
 
 export default Home;
