@@ -63,19 +63,20 @@ const getVaccinationData = async (userDate, stat) => {
   return vaccineStat;
 };
 
-//  Fetches stat provided for province, this case will use vaccines delivered and vaccine administered
+//  Fetches stat provided for provinces, this case will use vaccines delivered and vaccine administered
 
-const getVaccStats = async (date, stat) => {
+const getVaccStats = async (date) => {
   const response = await axios.get(baseURL, {
     params: {
       date,
-      stat,
     },
   });
-  return response.data;
+  const noRepatriated = response.data.summary.filter(
+    (item) => item.province !== 'Repatriated',
+  );
+  return noRepatriated;
 };
-
-// Fetches an array of data for cases chart with user provided date range
+// Fetches summary per province administered / distributed
 
 const getWeeklySummary = async (before, after) => {
   const response = await axios.get(baseURL, {
