@@ -11,9 +11,10 @@ export const getVaccineStats = createAsyncThunk(
 
 const initialState = {
   currentDate: '',
-  labels: [],
-  distributed: [],
-  administered: [],
+  labels: null,
+  distributed: null,
+  administered: null,
+  isLoading: true,
 };
 
 const vaccineGapSlice = createSlice({
@@ -25,6 +26,7 @@ const vaccineGapSlice = createSlice({
       state.labels = payload.map((item) => item.province);
       state.distributed = payload.map((item) => item.dvaccine);
       state.administered = payload.map((item) => item.avaccine);
+      state.isLoading = false;
     },
   },
 });
