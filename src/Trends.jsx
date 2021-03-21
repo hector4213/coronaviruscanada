@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVaccineData } from './redux/ducks/vaccineChartSlice';
 import VaccineChart from './components/Charts/VaccineChart';
 import CasesChart from './components/Charts/CasesChart';
-import ProvinceChart from './components/Charts/ProvinceChart';
+import VaccineGapChart from './components/Charts/VaccineGapChart';
 import CanadaStats from './components/Charts/CanadaStats';
 
 const Trends = () => {
@@ -17,11 +17,12 @@ const Trends = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="w-full flex flex-col items-center py-4 px-4 bg-gray-100 md:flex-row md:items-start">
+    <div className="flex flex-col items-center py-7 px-4 md:flex-row md:items-start">
       <div className="w-full my-1 mx-1 md:w-1/2 md:mr-5">
         <CanadaStats />
         <VaccineChart />
-        <ProvinceChart />
+        {/* TODO: fetch cumulative doses and cumulative vaccinations from inception of vaccine */}
+        <VaccineGapChart />
       </div>
       <div className="md:w-1/2">
         <CasesChart />
