@@ -29,7 +29,7 @@ const Provinces = () => {
   }
 
   return (
-    <div className="container mt-5 p-5 mx-auto">
+    <div className="container mx-auto">
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
         <Route exact path={`${path}`}>
           {provinceData.map((prov) => (
