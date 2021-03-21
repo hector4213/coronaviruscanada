@@ -21,20 +21,22 @@ const App = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="h-full">
+    <div className="min-h-screen">
       <Router>
         <Nav />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/today">
-            <Today />
-          </Route>
-          <Route path="/trends">
-            <Trends />
-          </Route>
-        </Switch>
+        <main className="bg-gray-100">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/today">
+              <Today />
+            </Route>
+            <Route path="/trends">
+              <Trends />
+            </Route>
+          </Switch>
+        </main>
       </Router>
     </div>
   );
