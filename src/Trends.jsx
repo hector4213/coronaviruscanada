@@ -21,7 +21,6 @@ const Trends = () => {
       <div className="w-full my-1 mx-1 md:w-1/2 md:mr-5">
         <CanadaStats />
         <VaccineChart />
-        {/* TODO: fetch cumulative doses and cumulative vaccinations from inception of vaccine */}
         <VaccineGapChart />
       </div>
       <div className="md:w-1/2">
