@@ -3,8 +3,8 @@ import covidService from '../../api/covid';
 
 export const getVaccineStats = createAsyncThunk(
   'vaccineGap/getVaccineStats',
-  async () => {
-    const vaccineData = covidService.getVaccStats('2021-03-18');
+  async (date) => {
+    const vaccineData = covidService.getVaccStats(date);
     return vaccineData;
   },
 );
@@ -20,15 +20,21 @@ const initialState = {
 const vaccineGapSlice = createSlice({
   name: 'vaccineGap',
   initialState,
-  reducers: {},
+  reducers: {
+    setInitDate: (state, { payload }) => {
+      state.currentDate = payload;
+    },
+  },
   extraReducers: {
     [getVaccineStats.fulfilled]: (state, { payload }) => {
       state.labels = payload.map((item) => item.province);
-      state.distributed = payload.map((item) => item.dvaccine);
-      state.administered = payload.map((item) => item.avaccine);
+      state.distributed = payload.map((item) => item.cumulative_dvaccine);
+      state.administered = payload.map((item) => item.cumulative_avaccine);
       state.isLoading = false;
     },
   },
 });
+
+export const { setInitDate } = vaccineGapSlice.actions;
 
 export default vaccineGapSlice.reducer;
