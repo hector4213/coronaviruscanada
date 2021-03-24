@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 import Home from './Home';
 import Today from './Today';
 import Trends from './Trends';
+import FindVaccine from './FindVaccine';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const App = () => {
     <div className="min-h-screen">
       <Router>
         <Nav />
-        <main className="bg-gray-100">
+        <main>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -34,6 +35,9 @@ const App = () => {
             </Route>
             <Route path="/trends">
               <Trends />
+            </Route>
+            <Route path="/findvaccine">
+              <FindVaccine />
             </Route>
           </Switch>
         </main>
