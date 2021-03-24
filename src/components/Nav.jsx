@@ -29,7 +29,7 @@ const Header = () => {
                   </Link>
                   <Link
                     className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    to="/vaccine"
+                    to="/findvaccine"
                   >
                     Get Vaccinated
                   </Link>
