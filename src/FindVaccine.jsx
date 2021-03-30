@@ -2,23 +2,26 @@ import { useEffect } from 'react';
 import Map from './components/FindVaccine/Map';
 
 const FindVaccine = () => {
-  // const [location, setLocation] = useState({
-  //   lat: null,
-  //   long: null,
-  // });
+  const getUserLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position);
+      },
+      (error) => {
+        console.log(error);
+      },
+    );
+  };
 
   useEffect(() => {
-    // const { lat, long } = location;
-
-    navigator.geolocation.getCurrentPosition(function (position) {
-      console.log('Latitude is :', position.coords.latitude);
-      console.log('Longitude is :', position.coords.longitude);
-    });
+    getUserLocation();
   }, []);
 
   return (
-    <div className="bg-black">
-      <Map />
+    <div className="bg-red-600">
+      <div id="map" className="h-96 max-w-sm bg-black">
+        <Map />
+      </div>
     </div>
   );
 };
