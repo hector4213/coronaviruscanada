@@ -9,13 +9,15 @@ const findHospitals = async (origin) => {
       radius: 50, // maybe let user be able to choose
       maxMatches: 10,
       ambiguities: 'ignore',
-      hostedData: 'mqap.ntpois',
+      hostedData: 'mqap.ntpois|group_sic_code=?|806202',
+      key: `${process.env.REACT_APP_MAPQUEST_KEY}`,
     },
   });
+  const { searchResults } = response.data;
 
-  return response;
+  return searchResults;
 };
 
-module.exports = {
-  findHopsitals,
+export default {
+  findHospitals,
 };
