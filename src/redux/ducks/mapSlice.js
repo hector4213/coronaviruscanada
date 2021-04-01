@@ -12,8 +12,7 @@ const mapSlice = createSlice({
   initialState,
   reducers: {
     setLocation: (state, { payload }) => {
-      const { latitude, longitude } = payload;
-      state.userLocation = [latitude, longitude];
+      state.userLocation = [...payload];
     },
   },
 });
