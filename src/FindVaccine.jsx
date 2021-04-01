@@ -1,34 +1,36 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentPositionPromise } from './lib/geolocation';
 import { setLocation } from './redux/ducks/mapSlice';
+
 import Map from './components/FindVaccine/Map';
 
 const FindVaccine = () => {
   const { userLocation } = useSelector((state) => state.map);
+
   const dispatch = useDispatch();
 
-  const getUserLocation = () => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        dispatch(setLocation({ latitude, longitude }));
-      },
-      (error) => {
-        console.log(error);
-      },
-    );
+  const getUserLocation = async () => {
+    try {
+      const position = await getCurrentPositionPromise();
+      const { latitude, longitude } = position.coords;
+      return dispatch(setLocation([latitude, longitude]));
+    } catch (error) {
+      return error;
+    }
   };
 
   useEffect(() => {
-    if (!userLocation.lat || !userLocation.long) getUserLocation();
+    console.log('rendered');
   }, [userLocation]);
 
   return (
     <div className="bg-red-600">
+      <button onClick={getUserLocation} type="button">
+        Locate me{' '}
+      </button>
       <div className="h-96 max-w-sm bg-black">
-        {Object.values(userLocation).every((point) => point !== null) && (
-          <Map userLocation={userLocation} />
-        )}
+        {userLocation.length < 0 ? null : <Map userLocation={userLocation} />}
       </div>
     </div>
   );
