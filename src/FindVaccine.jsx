@@ -1,36 +1,30 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentPositionPromise } from './lib/geolocation';
-import { setLocation } from './redux/ducks/mapSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getLocalHospitals } from './redux/ducks/mapSlice';
 
 import Map from './components/FindVaccine/Map';
 
 const FindVaccine = () => {
-  const { userLocation } = useSelector((state) => state.map);
-
+  const { userLocation, mapResults } = useSelector((state) => state.map);
   const dispatch = useDispatch();
 
-  const getUserLocation = async () => {
-    try {
-      const position = await getCurrentPositionPromise();
-      const { latitude, longitude } = position.coords;
-      return dispatch(setLocation([latitude, longitude]));
-    } catch (error) {
-      return error;
-    }
-  };
-
   useEffect(() => {
-    console.log('rendered');
+    if (userLocation) {
+      dispatch(getLocalHospitals(userLocation));
+    }
   }, [userLocation]);
 
   return (
-    <div className="bg-red-600">
-      <button onClick={getUserLocation} type="button">
-        Locate me{' '}
-      </button>
-      <div className="h-96 max-w-sm bg-black">
-        {userLocation.length < 0 ? null : <Map userLocation={userLocation} />}
+    <div className="mt-4 md:flex flex-row w-screen">
+      <div className="h-96 max-w-sm p-4 shadow-xl rounded-lg md:max-w-xl md:flex-1">
+        {userLocation.length < 0 ? null : (
+          <Map userLocation={userLocation} mapResults={mapResults} />
+        )}
+      </div>
+      <div className="p-4">
+        {mapResults.map((hospital) => (
+          <p>{hospital.name}</p>
+        ))}
       </div>
     </div>
   );
