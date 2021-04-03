@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const baseURL = 'https://www.mapquestapi.com/search/v2/radius';
 
-const findHospitals = async (origin) => {
+const findHospitals = async (coords) => {
   console.log(origin);
   const response = await axios.get(baseURL, {
     params: {
-      origin: `${origin[0]}, ${origin[1]}`,
+      origin: `${coords[0]}, ${coords[1]}`,
       radius: 50,
       maxMatches: 10,
       ambiguities: 'ignore',
