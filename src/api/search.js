@@ -6,7 +6,8 @@ const findHospitals = async (coords) => {
   console.log(origin);
   const response = await axios.get(baseURL, {
     params: {
-      origin: `${coords[0]}, ${coords[1]}`,
+      origin: `${coords[0]},${coords[1]}`,
+      units: 'k',
       radius: 50,
       maxMatches: 10,
       ambiguities: 'ignore',
