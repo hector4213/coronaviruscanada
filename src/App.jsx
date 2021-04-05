@@ -8,6 +8,7 @@ import Home from './views/Home';
 import Today from './views/Today';
 import Trends from './views/Trends';
 import SignUp from './views/SignUp';
+import Login from './views/Login';
 import FindVaccine from './views/FindVaccine';
 
 const App = () => {
@@ -40,7 +41,9 @@ const App = () => {
             <Route path="/findvaccine">
               <FindVaccine />
             </Route>
-            <Route path="/login">login</Route>
+            <Route path="/login">
+              <Login />
+            </Route>
             <Route path="/signup">
               <SignUp />
             </Route>
