@@ -7,6 +7,7 @@ import Nav from './components/Nav';
 import Home from './Home';
 import Today from './Today';
 import Trends from './Trends';
+import SignUpForm from './components/SignUp/SignUpForm';
 import FindVaccine from './FindVaccine';
 
 const App = () => {
@@ -39,8 +40,10 @@ const App = () => {
             <Route path="/findvaccine">
               <FindVaccine />
             </Route>
-            <Route path="/login"></Route>
-            <Router path="/signup"></Router>
+            <Route path="/login">login</Route>
+            <Route path="/signup">
+              <SignUpForm />
+            </Route>
           </Switch>
         </main>
       </Router>
