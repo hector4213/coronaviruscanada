@@ -4,7 +4,16 @@ import fireApi from '../../firebase/fireApi';
 export const signupUser = createAsyncThunk(
   'user/signup',
   async ({ email, password }) => {
-    const register = fireApi.signup(email, password);
+    const signup = await fireApi.signup(email, password);
+    return signup;
+  },
+);
+
+export const loginUser = createAsyncThunk(
+  'user/login',
+  async ({ email, password }) => {
+    const user = await fireApi.login(email, password);
+    return user;
   },
 );
 

@@ -39,6 +39,8 @@ const App = () => {
             <Route path="/findvaccine">
               <FindVaccine />
             </Route>
+            <Route path="/login"></Route>
+            <Router path="/signup"></Router>
           </Switch>
         </main>
       </Router>
