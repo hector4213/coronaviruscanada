@@ -1,4 +1,4 @@
-import firebase from './firebase';
+import firebase, { auth } from './firebase';
 //  Fetch images for province grid + province codes
 
 const fetchAppProvinces = async () => {
@@ -17,7 +17,19 @@ const fetchAppRegions = async (province) => {
   return regionData;
 };
 
+const signup = async (email, password) => {
+  const user = await auth.createUserWithEmailAndPassword(email, password);
+  return user;
+};
+
+const login = async (email, password) => {
+  const login = await auth.signInWithEmailAndPassword(email, password);
+  return login;
+};
+
 export default {
   fetchAppProvinces,
   fetchAppRegions,
+  signup,
+  login,
 };
