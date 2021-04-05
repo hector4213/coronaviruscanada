@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVersionDate } from './redux/ducks/infoSlice';
 import { setTodayDate } from './redux/ducks/summarySlice';
 import Nav from './components/Nav';
-import Home from './Home';
-import Today from './Today';
-import Trends from './Trends';
-import SignUpForm from './components/SignUp/SignUpForm';
-import FindVaccine from './FindVaccine';
+import Home from './views/Home';
+import Today from './views/Today';
+import Trends from './views/Trends';
+import SignUp from './views/SignUp';
+import FindVaccine from './views/FindVaccine';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const App = () => {
             </Route>
             <Route path="/login">login</Route>
             <Route path="/signup">
-              <SignUpForm />
+              <SignUp />
             </Route>
           </Switch>
         </main>
