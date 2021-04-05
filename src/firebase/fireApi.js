@@ -23,8 +23,8 @@ const signup = async (email, password) => {
 };
 
 const login = async (email, password) => {
-  const login = await auth.signInWithEmailAndPassword(email, password);
-  return login;
+  const loginUser = await auth.signInWithEmailAndPassword(email, password);
+  return loginUser;
 };
 
 export default {
