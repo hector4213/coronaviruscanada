@@ -1,19 +1,38 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { SiMinutemailer } from 'react-icons/si';
 import { RiLockPasswordLine } from 'react-icons/ri';
-import { signupUser } from '../../redux/ducks/userSlice';
+
+// Local dependencies
+import { auth, createUserProfileDocument } from '../../firebase/firebase';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
+  const [displayName] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const dispatch = useDispatch();
+  const [error, setError] = useState(null);
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    dispatch(signupUser({ email, password }));
+    try {
+      // Create user through Firebase auth
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password,
+      );
+      /**
+       * Create a user in firestore (only if you have firestore in use)
+       * so you can store user settings and allow them to update
+       * their settings later, if you want. For example, you can add
+       * a field for them to add a displayName, like a username or
+       * something along those lines
+       */
+      await createUserProfileDocument(user, { displayName });
+    } catch (err) {
+      console.error('handleSignup error :>>', err);
+      setError(err);
+    }
   };
 
   return (
@@ -79,13 +98,16 @@ const SignUp = () => {
               </Link>
             </div>
           </div>
-          <div className="flex w-full">
+          <div className="flex w-full flex-col">
             <button
               type="submit"
               className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
             >
               Sign Up
             </button>
+            {error && (
+              <p className="text-red-500 text-center mt-2">{error.message}</p>
+            )}
           </div>
         </form>
       </div>

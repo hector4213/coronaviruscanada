@@ -1,32 +1,20 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import fireApi from '../../firebase/fireApi';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const signupUser = createAsyncThunk(
-  'user/signup',
-  async ({ email, password }) => {
-    const signup = await fireApi.signup(email, password);
-    return signup;
-  },
-);
-
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async ({ email, password }) => {
-    const user = await fireApi.login(email, password);
-    return user;
-  },
-);
-
-const initialState = {
+export const initialState = {
   currentUser: null,
   appointments: [],
 };
 
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
-  extraReducers: {},
+  reducers: {
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+    },
+  },
 });
+
+export const { setCurrentUser } = userSlice.actions;
 
 export default userSlice.reducer;

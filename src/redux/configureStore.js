@@ -6,7 +6,7 @@ import vaccineChartSlice from './ducks/vaccineChartSlice';
 import casesChartSlice from './ducks/casesChartSlice';
 import vaccineGapSlice from './ducks/vaccineGapSlice';
 import mapSlice from './ducks/mapSlice';
-import userSlice from './ducks/userSlice';
+import user from './ducks/userSlice';
 
 export default configureStore({
   reducer: {
@@ -17,6 +17,6 @@ export default configureStore({
     casesData: casesChartSlice,
     vaccineGap: vaccineGapSlice,
     map: mapSlice,
-    user: userSlice,
+    user,
   },
 });
