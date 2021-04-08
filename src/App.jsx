@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Local dependencies
 import { getVersionDate } from './redux/ducks/infoSlice';
@@ -21,18 +21,8 @@ import { useAuthSubscription } from './firebase/useAuthSubscription';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { apiLastUpdated, user } = useSelector(
-    (state) => ({
-      apiLastUpdated: state.appData,
-      user: state.user.currentUser,
-    }),
-    /**
-     * shallowEqual to avoid unnecessary rerenders
-     * when changing other pieces of state
-     * https://react-redux.js.org/api/hooks#equality-comparisons-and-updates
-     */
-    shallowEqual,
-  );
+  const { apiLastUpdated } = useSelector((state) => state.appData);
+  const { user } = useSelector((state) => state.user);
 
   useAuthSubscription();
 
@@ -42,7 +32,7 @@ const App = () => {
     } else {
       dispatch(setTodayDate(apiLastUpdated));
     }
-  }, [apiLastUpdated]);
+  }, []);
 
   return (
     <div className="min-h-screen">
