@@ -1,9 +1,31 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../../redux/ducks/mapSlice';
+import { firestore } from '../../firebase/firebase';
 
 const AppointmentModal = () => {
+  const [time, setTime] = useState('');
+  const [date, setDate] = useState('');
   const { selectedHospital } = useSelector((state) => state.map);
-  console.log(selectedHospital);
+  const { currentUser } = useSelector((state) => state.user);
+
+  const handleApptSubmit = async () => {
+    const db = firestore;
+    await db.collection('appointments').doc('03WhyqFtQGmiTqIDaUla').set({
+      id: currentUser.id,
+      location: selectedHospital.name,
+      time,
+      phone: selectedHospital.fields.phone,
+    });
+  };
+
+  const handleFieldChange = (e) => {
+    if (e.target.name === 'date') {
+      setDate(e.target.value);
+    } else if (e.target.name === 'time') {
+      setTime(e.target.value);
+    }
+  };
 
   const dispatch = useDispatch();
   return (
@@ -33,8 +55,18 @@ const AppointmentModal = () => {
                 <p>{selectedHospital.fields.address}</p>
                 <p>{selectedHospital.fields.city}</p>
                 <p>{selectedHospital.fields.phone}</p>
-                <input type="date" />
-                <input type="time" />
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => handleFieldChange(e)}
+                  name="date"
+                />
+                <input
+                  type="time"
+                  value={time}
+                  onChange={(e) => handleFieldChange(e)}
+                  name="time"
+                />
               </div>
             </div>
             <div className="flex items-center justify-end p-6 border-t border-solid border-gray-200 rounded-b">
@@ -48,7 +80,7 @@ const AppointmentModal = () => {
               <button
                 className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                 type="button"
-                onClick={() => console.log('appointment booked')}
+                onClick={handleApptSubmit}
               >
                 Book
               </button>
