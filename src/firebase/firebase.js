@@ -45,5 +45,4 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
-export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 export default firebase;
