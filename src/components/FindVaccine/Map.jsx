@@ -23,6 +23,7 @@ const Map = ({ userLocation, mapResults }) => {
         ? null
         : mapResults.map((hospital) => (
             <HospitalMarker
+              key={hospital.key}
               hospital={hospital}
               position={[hospital.fields.lat, hospital.fields.lng]}
             />
