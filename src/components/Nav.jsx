@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Local dependencies
 import { auth } from '../firebase/firebase';
@@ -7,6 +8,9 @@ import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
+  const { currentUser } = useSelector((state) => state.user);
+  const history = useHistory();
+  console.log(currentUser);
   return (
     <>
       <nav className="bg-white dark:bg-gray-800  shadow py-4 ">
@@ -42,6 +46,12 @@ const Header = () => {
                   >
                     About
                   </Link>
+                </div>
+              </div>
+            </div>
+            <div className="block">
+              <div className="md:block -mr-2 flex">
+                {currentUser ? (
                   <button
                     className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
                     type="button"
@@ -49,27 +59,11 @@ const Header = () => {
                   >
                     Log out
                   </button>
-                </div>
-              </div>
-            </div>
-            <div className="block">
-              <div className="md:block -mr-2 flex">
-                <form className="flex w-full max-w-sm space-x-3">
-                  <div className=" relative ">
-                    <input
-                      type="text"
-                      id='"form-subscribe-Search'
-                      className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                      placeholder="search"
-                    />
-                  </div>
-                  <button
-                    className="flex-shrink-0 px-4 py-2 text-base font-semibold text-white bg-green-500 rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200"
-                    type="submit"
-                  >
-                    Search
+                ) : (
+                  <button type="button" onClick={() => history.push('/login')}>
+                    Sign In
                   </button>
-                </form>
+                )}
               </div>
               <div className="ml-4 flex items-center md:ml-6" />
             </div>
