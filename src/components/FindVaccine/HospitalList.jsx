@@ -7,7 +7,7 @@ const HospitalList = ({ hospitals }) => {
   return (
     <ul className="bg-gray-200">
       {hospitals.map((hospital) => (
-        <li>
+        <li key={hospital.key}>
           {hospital.name}
           <button
             onClick={() => dispatch(openModal(hospital))}
