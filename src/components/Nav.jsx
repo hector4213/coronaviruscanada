@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+
+// Local dependencies
+import { auth } from '../firebase/firebase';
 import Logo from '../assets/coronavirus.png';
 
 const Header = () => {
@@ -39,6 +42,13 @@ const Header = () => {
                   >
                     About
                   </Link>
+                  <button
+                    className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    type="button"
+                    onClick={() => auth.signOut()}
+                  >
+                    Log out
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,4 +1,5 @@
-import firebase, { auth } from './firebase';
+import firebase from 'firebase/app';
+import { auth } from './firebase';
 //  Fetch images for province grid + province codes
 
 const fetchAppProvinces = async () => {
