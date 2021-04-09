@@ -1,5 +1,4 @@
 import firebase from 'firebase/app';
-import { auth } from './firebase';
 //  Fetch images for province grid + province codes
 
 const fetchAppProvinces = async () => {
@@ -18,16 +17,6 @@ const fetchAppRegions = async (province) => {
   return regionData;
 };
 
-const signup = async (email, password) => {
-  const user = await auth.createUserWithEmailAndPassword(email, password);
-  return user;
-};
-
-const login = async (email, password) => {
-  const loginUser = await auth.signInWithEmailAndPassword(email, password);
-  return loginUser;
-};
-
 const createAppointment = async (obj) => {
   const db = firebase.firestore();
 
@@ -35,7 +24,7 @@ const createAppointment = async (obj) => {
     await db.collection('appointments').add(obj);
     console.log('success!');
   } catch (error) {
-    console.log('error occured on appointment fetch', error);
+    console.log('something went wrong..', error);
   }
 };
 
@@ -53,15 +42,26 @@ const fetchAppointments = async (userId) => {
     }));
     return appointments;
   } catch (error) {
-    return console.log('an error occured', error); // handle error?
+    return console.log('something went wrong..', error); // handle error?
+  }
+};
+
+const deleteAppointment = async (id) => {
+  const db = firebase.firestore();
+  const appointment = db.collection('appointments').doc(`${id}`);
+
+  try {
+    await appointment.delete();
+    return id;
+  } catch (error) {
+    return console.log('something went wrong..', error);
   }
 };
 
 export default {
   fetchAppProvinces,
   fetchAppRegions,
-  signup,
-  login,
   createAppointment,
   fetchAppointments,
+  deleteAppointment,
 };
