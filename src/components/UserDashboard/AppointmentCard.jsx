@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { GiHealthCapsule } from 'react-icons/gi';
+import { deleteAppointment } from '../../redux/ducks/userSlice';
 
 const AppointmentCard = ({ appointment }) => {
+  const dispatch = useDispatch();
   const { location, time, date, id } = appointment;
 
   const handleDelete = (apptId) => {
-    console.log(`Deleted appointment with id ${apptId}`);
+    dispatch(deleteAppointment(apptId));
   };
 
   return (
