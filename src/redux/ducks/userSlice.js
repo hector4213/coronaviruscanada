@@ -4,7 +4,7 @@ import fireApi from '../../firebase/fireApi';
 export const getAppointments = createAsyncThunk(
   'user/getAppointments',
   async (userId) => {
-    const appointments = fireApi.fetchAppointments(userId);
+    const appointments = await fireApi.fetchAppointments(userId);
     return appointments;
   },
 );
@@ -14,6 +14,14 @@ export const createAppointment = createAsyncThunk(
   async (obj) => {
     await fireApi.createAppointment(obj);
     return obj;
+  },
+);
+
+export const deleteAppointment = createAsyncThunk(
+  'user/deleteAppoinments',
+  async (id) => {
+    const deletedAppointmentId = fireApi.deleteAppointment(id);
+    return deletedAppointmentId;
   },
 );
 
@@ -32,6 +40,11 @@ export const userSlice = createSlice({
     addAppointment: (state, { payload }) => {
       state.appointments.push(payload);
     },
+    removeAppointment: (state, { payload }) => {
+      state.appoinments = state.appointments.filter(
+        (appointment) => appointment.id !== payload,
+      );
+    },
   },
   extraReducers: {
     [getAppointments.fulfilled]: (state, { payload }) => {
@@ -40,9 +53,18 @@ export const userSlice = createSlice({
     [createAppointment.fulfilled]: (state, { payload }) => {
       state.appointments.push(payload);
     },
+    [deleteAppointment.fulfilled]: (state, { payload }) => {
+      state.appointments = state.appointments.filter(
+        (appt) => appt.id !== payload,
+      );
+    },
   },
 });
 
-export const { setCurrentUser, addAppointment } = userSlice.actions;
+export const {
+  setCurrentUser,
+  addAppointment,
+  removeppointment,
+} = userSlice.actions;
 
 export default userSlice.reducer;
