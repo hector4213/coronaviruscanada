@@ -18,7 +18,7 @@ const UserDashboard = () => {
   }
 
   return (
-    <div>
+    <div className="p-4">
       <h1 className="text-2xl">Hello {currentUser.email}</h1>
       <Appointments appointments={appointments} />
     </div>
