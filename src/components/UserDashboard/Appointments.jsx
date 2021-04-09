@@ -3,9 +3,9 @@ import AppointmentCard from './AppointmentCard';
 
 const Appointments = ({ appointments }) => {
   return (
-    <div className="flex">
+    <div className="flex flex-col items-center md:flex-row md:justify-start">
       {appointments.map((appointment) => (
-        <AppointmentCard appointment={appointment} />
+        <AppointmentCard key={appointment.id} appointment={appointment} />
       ))}
     </div>
   );
