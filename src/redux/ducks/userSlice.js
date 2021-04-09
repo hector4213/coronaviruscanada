@@ -9,6 +9,14 @@ export const getAppointments = createAsyncThunk(
   },
 );
 
+export const createAppointment = createAsyncThunk(
+  'user/createAppointment',
+  async (obj) => {
+    await fireApi.createAppointment(obj);
+    return obj;
+  },
+);
+
 export const initialState = {
   currentUser: null,
   appointments: [],
@@ -28,6 +36,9 @@ export const userSlice = createSlice({
   extraReducers: {
     [getAppointments.fulfilled]: (state, { payload }) => {
       state.appointments = [...payload];
+    },
+    [createAppointment.fulfilled]: (state, { payload }) => {
+      state.appointments.push(payload);
     },
   },
 });
