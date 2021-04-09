@@ -3,7 +3,7 @@ import { GiHealthCapsule } from 'react-icons/gi';
 
 const AppointmentCard = ({ appointment }) => {
   return (
-    <div className="shadow-lg rounded-2xl w-96 p-4 bg-white relative overflow-hidden">
+    <div className="shadow-lg rounded-2xl w-80 p-4 mb-2 bg-white relative overflow-hidden md:mr-4">
       <GiHealthCapsule className="absolute -right-20 -bottom-8 h-40 w-40 mb-4" />
       <div className="w-4/6 h-full flex flex-col justify-around">
         <p className="text-gray-800 text-lg font-medium mb-2">
@@ -14,7 +14,7 @@ const AppointmentCard = ({ appointment }) => {
           Time: {appointment.time}
         </p>
         <button
-          className="px-3 py-2 bg-red-800 text-white text-xs font-bold uppercase"
+          className="px-3 py-2 bg-red-500 text-white text-xs font-bold uppercase"
           type="button"
         >
           Cancel
