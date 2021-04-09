@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
+import AppointmentCard from './AppointmentCard';
 
 const Appointments = ({ appointments }) => {
   return (
-    <div>
-      <p>{appointments.map((appointment) => appointment.location)}</p>
+    <div className="flex">
+      {appointments.map((appointment) => (
+        <AppointmentCard appointment={appointment} />
+      ))}
     </div>
   );
 };
