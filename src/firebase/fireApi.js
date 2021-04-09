@@ -47,7 +47,10 @@ const fetchAppointments = async (userId) => {
 
   try {
     const data = await appointmentsRef.get();
-    const appointments = data.docs.map((doc) => doc.data());
+    const appointments = data.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     return appointments;
   } catch (error) {
     return console.log('an error occured', error); // handle error?
