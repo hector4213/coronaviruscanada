@@ -1,22 +1,27 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createAppointment } from '../../redux/ducks/userSlice';
 import { closeModal } from '../../redux/ducks/mapSlice';
-import { firestore } from '../../firebase/firebase';
 
 const AppointmentModal = () => {
+  // Local State for input fields
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
+
+  const dispatch = useDispatch();
   const { selectedHospital } = useSelector((state) => state.map);
   const { currentUser } = useSelector((state) => state.user);
 
   const handleApptSubmit = async () => {
-    const db = firestore;
-    await db.collection('appointments').doc('03WhyqFtQGmiTqIDaUla').set({
-      id: currentUser.id,
+    const newAppointment = {
+      userId: currentUser.id,
       location: selectedHospital.name,
       time,
+      date,
       phone: selectedHospital.fields.phone,
-    });
+    };
+    dispatch(createAppointment(newAppointment));
+    dispatch(closeModal());
   };
 
   const handleFieldChange = (e) => {
@@ -27,7 +32,6 @@ const AppointmentModal = () => {
     }
   };
 
-  const dispatch = useDispatch();
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
