@@ -5,7 +5,7 @@ import { openModal } from '../../redux/ducks/mapSlice';
 const HospitalList = ({ hospitals }) => {
   const dispatch = useDispatch();
   return (
-    <ul className="flex flex-col mx-auto w-full justify-center bg-white rounded-lg shadow p-4">
+    <ul className="flex flex-col mx-auto w-full justify-center bg-white rounded-lg shadow-xl p-4">
       {hospitals.map((hospital) => (
         <li
           key={hospital.key}
