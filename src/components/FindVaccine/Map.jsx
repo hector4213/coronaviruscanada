@@ -8,7 +8,7 @@ const Map = ({ userLocation, mapResults }) => {
     <MapContainer
       className="h-full w-full"
       center={userLocation}
-      zoom={13}
+      zoom={10}
       scrollWheelZoom
     >
       <TileLayer
