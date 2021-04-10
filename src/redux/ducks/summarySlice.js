@@ -49,6 +49,7 @@ const summariesSlice = createSlice({
     },
     [getProvinceSummary.fulfilled]: (state, { payload }) => {
       state.currentProvince = payload;
+      state.isLoading = false;
     },
     [getAppRegions.fulfilled]: (state, { payload }) => {
       state.provinceRegions = payload;
