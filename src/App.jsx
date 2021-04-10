@@ -33,7 +33,7 @@ const App = () => {
     } else {
       dispatch(setTodayDate(apiLastUpdated));
     }
-  }, []);
+  }, [apiLastUpdated]);
 
   return (
     <div className="min-h-screen">
