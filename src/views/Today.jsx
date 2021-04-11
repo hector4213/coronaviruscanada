@@ -6,7 +6,7 @@ import { getAppProvinces } from '../redux/ducks/infoSlice';
 import ProvinceCard from '../components/ProvinceCard';
 import ProvinceDash from '../components/ProvinceDash';
 
-const Provinces = () => {
+const Today = () => {
   const { isLoading, today } = useSelector((state) => state.summaries);
   const { provinceData } = useSelector((state) => state.appData);
   const dispatch = useDispatch();
@@ -52,4 +52,4 @@ const Provinces = () => {
   );
 };
 
-export default Provinces;
+export default Today;
