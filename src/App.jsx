@@ -44,7 +44,7 @@ const App = () => {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/today">
+            <Route path="/today">
               <Today />
             </Route>
             <Route exact path="/trends">
