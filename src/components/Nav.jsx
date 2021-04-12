@@ -87,32 +87,33 @@ const Header = () => {
             </div>
           </div>
         </div>
+        {/*  Mobile */}
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
+            <Link
               className="text-gray-800 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
+              to="/today"
             >
               Today
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-gray-300 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
+              to="/trends"
             >
               Trends
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
+              to="/findvaccine"
             >
               Get Vaccinated
-            </a>
-            <a
+            </Link>
+            <Link
               className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/#"
+              to="/about"
             >
-              Contact
-            </a>
+              About
+            </Link>
           </div>
         </div>
       </nav>
