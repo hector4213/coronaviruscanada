@@ -41,10 +41,11 @@ const Header = () => {
                     Get Vaccinated
                   </Link>
                   <Link
-                    className="text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
-                    to="/about"
+                    className="disabled:opacity-50 text-gray-800  hover:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-md font-medium"
+                    to="/dashboard"
+                    disabled
                   >
-                    About
+                    Dashboard
                   </Link>
                 </div>
               </div>
@@ -110,9 +111,9 @@ const Header = () => {
             </Link>
             <Link
               className="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              to="/about"
+              to="/dashboard"
             >
-              About
+              Dashboard
             </Link>
           </div>
         </div>
