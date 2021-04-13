@@ -20,9 +20,11 @@ const UserDashboard = () => {
   return (
     <div className="p-4">
       <div className="md:grid grid-cols-2 grid-rows-2">
-        <h1 className="text-3xl text-center md:text-4xl font-medium mb-2 p-8">
-          Hello {currentUser.displayName || currentUser.email}
-        </h1>
+        <div className="flex justify-center items-center">
+          <h1 className="text-3xl text-center md:text-4xl font-medium mb-2 p-8">
+            Hello {currentUser.displayName || currentUser.email}
+          </h1>
+        </div>
         <div className="flex justify-center items-center">
           <div className=" relative ">
             <label htmlFor="display-name" className="text-gray-700">
@@ -43,7 +45,7 @@ const UserDashboard = () => {
             </button>
           </div>
         </div>
-        <div>
+        <div className="flex justify-center items-center">
           <Appointments appointments={appointments} />
         </div>
       </div>

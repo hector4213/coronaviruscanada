@@ -4,10 +4,10 @@ import AppointmentCard from './AppointmentCard';
 const Appointments = ({ appointments }) => {
   return (
     <div className="container w-full">
-      <h3 className="text-xl font-medium">
+      <h3 className="text-xl my-4 font-medium text-center">
         You currently have {appointments.length} appointments
       </h3>
-      <div className="flex flex-col items-center md:flex-row md:justify-start">
+      <div className="flex flex-col items-center md:flex-row md:justify-center">
         {appointments.map((appointment) => (
           <AppointmentCard key={appointment.id} appointment={appointment} />
         ))}
