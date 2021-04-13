@@ -6,6 +6,9 @@ const HospitalList = ({ hospitals }) => {
   const dispatch = useDispatch();
   return (
     <ul className="flex flex-col mx-auto w-full justify-center bg-white rounded-lg shadow-xl p-4">
+      <h1 className="text-center text-2xl p-4 text-blue-500">
+        Vaccination sites near you
+      </h1>
       {hospitals.map((hospital) => (
         <li
           key={hospital.key}
