@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createAppointment } from '../../redux/ducks/userSlice';
+import { createAppointment, setError } from '../../redux/ducks/userSlice';
 import { closeModal } from '../../redux/ducks/mapSlice';
 
 const AppointmentModal = () => {
@@ -10,7 +10,9 @@ const AppointmentModal = () => {
 
   const dispatch = useDispatch();
   const { selectedHospital } = useSelector((state) => state.map);
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, isFieldsError, errorMessage } = useSelector(
+    (state) => state.user,
+  );
 
   const handleApptSubmit = async () => {
     const newAppointment = {
@@ -20,8 +22,13 @@ const AppointmentModal = () => {
       date,
       phone: selectedHospital.fields.phone,
     };
-    dispatch(createAppointment(newAppointment));
-    dispatch(closeModal());
+
+    if (!time || !date) {
+      dispatch(setError('Please complete all fields')); //  TODO: Put modal state in user
+    } else {
+      dispatch(createAppointment(newAppointment));
+      dispatch(closeModal());
+    }
   };
 
   const handleFieldChange = (e) => {
@@ -43,6 +50,7 @@ const AppointmentModal = () => {
               <h3 className="text-3xl font-semibold">
                 Your Appointment at {selectedHospital.name}
               </h3>
+              {isFieldsError && <h3 className="bg-red-600">{errorMessage}</h3>}
               <button
                 type="button"
                 className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
