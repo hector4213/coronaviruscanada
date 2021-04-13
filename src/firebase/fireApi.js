@@ -58,6 +58,18 @@ const deleteAppointment = async (id) => {
   }
 };
 
+const updateDisplayName = async (name) => {
+  const user = firebase.auth().currentUser;
+  try {
+    await user.updateDisplayName({
+      displayName: name,
+    });
+    return name;
+  } catch (error) {
+    return console.log('something went wrong..', error);
+  }
+};
+
 export default {
   fetchAppProvinces,
   fetchAppRegions,
