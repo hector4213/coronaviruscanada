@@ -19,9 +19,34 @@ const UserDashboard = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl">Hello {currentUser.email}</h1>
-      <p>You currently have {appointments.length} appointments</p>
-      <Appointments appointments={appointments} />
+      <div className="md:grid grid-cols-2 grid-rows-2">
+        <h1 className="text-3xl text-center md:text-4xl font-medium mb-2 p-8">
+          Hello {currentUser.displayName || currentUser.email}
+        </h1>
+        <div className="flex justify-center items-center">
+          <div className=" relative ">
+            <label htmlFor="display-name" className="text-gray-700">
+              Update your display name
+              <input
+                type="text"
+                id="display-name"
+                className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
+                name="display-name"
+                placeholder="Your name"
+              />
+            </label>
+            <button
+              className="py-2 px-4 mt-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+              type="submit"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+        <div>
+          <Appointments appointments={appointments} />
+        </div>
+      </div>
     </div>
   );
 };
