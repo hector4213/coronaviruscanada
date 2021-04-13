@@ -28,6 +28,7 @@ export const deleteAppointment = createAsyncThunk(
 export const initialState = {
   currentUser: null,
   appointments: [],
+  isFieldsError: false,
 };
 
 export const userSlice = createSlice({
