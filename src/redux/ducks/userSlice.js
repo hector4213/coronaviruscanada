@@ -25,6 +25,14 @@ export const deleteAppointment = createAsyncThunk(
   },
 );
 
+export const updateDisplayName = createAsyncThunk(
+  'user/updateDisplayName',
+  async (name) => {
+    const userName = await fireApi.updateDisplayName(name);
+    return userName;
+  },
+);
+
 export const initialState = {
   currentUser: null,
   appointments: [],
@@ -69,6 +77,9 @@ export const userSlice = createSlice({
       state.appointments = state.appointments.filter(
         (appt) => appt.id !== payload,
       );
+    },
+    [updateDisplayName.fulfilled]: (state, { payload }) => {
+      state.curentUser = { ...state.currentUser, displayName: payload };
     },
   },
 });
