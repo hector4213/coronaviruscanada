@@ -21,6 +21,7 @@ export const getAppProvinces = createAsyncThunk(
 const initialState = {
   apiLastUpdated: '',
   apiStartDate: '2020-09-01',
+  isLoading: false,
   provinceData: [],
 };
 
@@ -34,6 +35,10 @@ const infoSlice = createSlice({
     },
     [getAppProvinces.fulfilled]: (state, { payload }) => {
       state.provinceData = payload;
+      state.isLoading = false;
+    },
+    [getAppProvinces.pending]: (state) => {
+      state.isLoading = true;
     },
   },
 });
