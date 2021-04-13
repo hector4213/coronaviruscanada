@@ -29,6 +29,7 @@ export const initialState = {
   currentUser: null,
   appointments: [],
   isFieldsError: false,
+  errorMessage: '',
 };
 
 export const userSlice = createSlice({
@@ -46,12 +47,18 @@ export const userSlice = createSlice({
         (appointment) => appointment.id !== payload,
       );
     },
+    setError: (state, { payload }) => {
+      state.isFieldsError = true;
+      state.errorMessage = payload;
+    },
   },
   extraReducers: {
     [getAppointments.fulfilled]: (state, { payload }) => {
       state.appointments = [...payload];
     },
     [createAppointment.fulfilled]: (state, { payload }) => {
+      state.isFieldsError = false;
+      state.errorMessage = '';
       state.appointments.push(payload);
     },
     [deleteAppointment.fulfilled]: (state, { payload }) => {
@@ -66,6 +73,7 @@ export const {
   setCurrentUser,
   addAppointment,
   removeppointment,
+  setError,
 } = userSlice.actions;
 
 export default userSlice.reducer;
