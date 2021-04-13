@@ -27,7 +27,7 @@ const Today = () => {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading || provinceData.length < 1 ? (
         <Loader />
       ) : (
         <div className="container mt-4 mx-auto">
