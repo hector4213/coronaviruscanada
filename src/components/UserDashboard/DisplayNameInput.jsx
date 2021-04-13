@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateDisplayName } from '../../redux/ducks/userSlice';
 
 const DisplayNameInput = () => {
-  const [name, setName] = useState('');
+  const { currentUser } = useSelector((state) => state.user);
+  const [name, setName] = useState(currentUser.displayName);
   const dispatch = useDispatch();
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    dispatch(updateDisplayName(name));
+    dispatch(updateDisplayName({ id: currentUser.id, newName: name }));
   };
 
   return (
