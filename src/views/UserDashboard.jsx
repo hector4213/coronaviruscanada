@@ -20,6 +20,7 @@ const UserDashboard = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl">Hello {currentUser.email}</h1>
+      <p>You currently have {appointments.length} appointments</p>
       <Appointments appointments={appointments} />
     </div>
   );
