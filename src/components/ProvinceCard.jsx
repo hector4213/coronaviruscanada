@@ -4,7 +4,7 @@ import { Link, useRouteMatch } from 'react-router-dom';
 const ProvinceCard = ({ name, logo, province, path }) => {
   const { url } = useRouteMatch();
   return (
-    <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto xs:mt-3">
+    <div className="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto my-3 xs:mt-3">
       <Link to={`${url}${path}`} className="w-full block h-full">
         <img
           alt="province"
