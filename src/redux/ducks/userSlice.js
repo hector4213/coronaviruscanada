@@ -80,7 +80,7 @@ export const userSlice = createSlice({
       );
     },
     [updateDisplayName.fulfilled]: (state, { payload }) => {
-      state.currentUser.displayName = payload;
+      state.currentUser = { ...state.currentUser, displayName: payload };
     },
   },
 });
