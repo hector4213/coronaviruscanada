@@ -27,10 +27,9 @@ export const deleteAppointment = createAsyncThunk(
 
 export const updateDisplayName = createAsyncThunk(
   'user/updateDisplayName',
-  async (name) => {
-    const userName = await fireApi.updateDisplayName(name);
-    console.log(userName);
-    return userName;
+  async ({ id, newName }) => {
+    const newDisplayName = await fireApi.updateDisplayName(id, newName);
+    return newDisplayName;
   },
 );
 
