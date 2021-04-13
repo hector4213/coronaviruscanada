@@ -42,7 +42,7 @@ const fetchAppointments = async (userId) => {
     }));
     return appointments;
   } catch (error) {
-    return console.log('something went wrong..', error); // handle error?
+    return console.log('something went wrong..', error);
   }
 };
 
@@ -58,16 +58,21 @@ const deleteAppointment = async (id) => {
   }
 };
 
-const updateDisplayName = async (name) => {
-  const user = firebase.auth().currentUser;
-  try {
-    await user.updateProfile({
-      displayName: name,
-    });
-    return name;
-  } catch (error) {
-    return console.log('something went wrong..', error);
+const updateDisplayName = async (id, newName) => {
+  const userRef = firebase.firestore().collection('users').doc(id);
+
+  const snapShot = await userRef.get();
+
+  if (snapShot.exists) {
+    try {
+      await userRef.set({
+        displayName: newName,
+      });
+    } catch (error) {
+      return console.log('something went wrong...', error);
+    }
   }
+  return newName;
 };
 
 export default {
