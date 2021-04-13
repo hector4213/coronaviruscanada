@@ -61,7 +61,7 @@ const deleteAppointment = async (id) => {
 const updateDisplayName = async (name) => {
   const user = firebase.auth().currentUser;
   try {
-    await user.updateDisplayName({
+    await user.updateProfile({
       displayName: name,
     });
     return name;
@@ -76,4 +76,5 @@ export default {
   createAppointment,
   fetchAppointments,
   deleteAppointment,
+  updateDisplayName,
 };
