@@ -22,7 +22,9 @@ const FindVaccine = () => {
   return (
     <div className="mt-4 w-full">
       <div className="p-4">
-        <h1 className="text-4xl">Click the map to find your location</h1>
+        <h1 className="text-3xl md:text-4xl font-medium mb-2">
+          Click the map to find your location
+        </h1>
       </div>
       <div className="mt-4 flex flex-col md:flex-row items-center justify-between md:p-4">
         <div className="p-4 h-96 w-screen z-30 shadow-xl rounded-lg md:max-w-2xl md:w-1/2">
