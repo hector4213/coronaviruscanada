@@ -29,6 +29,7 @@ export const updateDisplayName = createAsyncThunk(
   'user/updateDisplayName',
   async (name) => {
     const userName = await fireApi.updateDisplayName(name);
+    console.log(userName);
     return userName;
   },
 );
@@ -79,7 +80,7 @@ export const userSlice = createSlice({
       );
     },
     [updateDisplayName.fulfilled]: (state, { payload }) => {
-      state.curentUser = { ...state.currentUser, displayName: payload };
+      state.currentUser.displayName = payload;
     },
   },
 });
