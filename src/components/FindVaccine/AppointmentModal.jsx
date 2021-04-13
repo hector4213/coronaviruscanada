@@ -1,14 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createAppointment, setError } from '../../redux/ducks/userSlice';
+import {
+  createAppointment,
+  setError,
+  clearModalErrors,
+} from '../../redux/ducks/userSlice';
 import { closeModal } from '../../redux/ducks/mapSlice';
 
 const AppointmentModal = () => {
   // Local State for input fields
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => dispatch(clearModalErrors());
+  }, []);
+
   const { selectedHospital } = useSelector((state) => state.map);
   const { currentUser, isFieldsError, errorMessage } = useSelector(
     (state) => state.user,
