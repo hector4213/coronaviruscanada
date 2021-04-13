@@ -51,6 +51,10 @@ export const userSlice = createSlice({
       state.isFieldsError = true;
       state.errorMessage = payload;
     },
+    clearModalErrors: (state) => {
+      state.isFieldsError = false;
+      state.errorMessage = '';
+    },
   },
   extraReducers: {
     [getAppointments.fulfilled]: (state, { payload }) => {
@@ -74,6 +78,7 @@ export const {
   addAppointment,
   removeppointment,
   setError,
+  clearModalErrors,
 } = userSlice.actions;
 
 export default userSlice.reducer;
