@@ -14,6 +14,7 @@ const initialState = {
   userLocation: [43.6447778, -79.398395],
   mapResults: [],
   isModalOpen: false,
+  isListLoading: true,
   selectedHospital: null,
 };
 
@@ -36,6 +37,10 @@ const mapSlice = createSlice({
   extraReducers: {
     [getLocalHospitals.fulfilled]: (state, { payload }) => {
       state.mapResults = [...payload];
+      state.isListLoading = false;
+    },
+    [getLocalHospitals.pending]: (state) => {
+      state.isListLoading = true;
     },
   },
 });
