@@ -20,22 +20,18 @@ const FindVaccine = () => {
   }, [userLocation]);
 
   return (
-    <div className="mt-4 w-full">
-      <div className="p-4">
-        <h1 className="text-3xl md:text-4xl font-medium mb-2">
-          Click the map to find your location
-        </h1>
+    <div className="w-full p-4 md:grid grid-cols-2 gap-x-4">
+      <h1 className="text-3xl col-span-full p-4 md:text-4xl font-medium">
+        Click the map to find your location
+      </h1>
+      <div className="flex items-center h-full z-30 bg-gray-400 p-2 mb-2 rounded-lg shadow-xl md:px-8">
+        {userLocation.length < 0 ? null : (
+          <Map userLocation={userLocation} mapResults={mapResults} />
+        )}
       </div>
-      <div className="mt-4 flex flex-col md:flex-row items-center justify-between md:p-4">
-        <div className="p-4 h-96 w-screen z-30 shadow-xl rounded-lg md:max-w-2xl md:w-1/2">
-          {userLocation.length < 0 ? null : (
-            <Map userLocation={userLocation} mapResults={mapResults} />
-          )}
-        </div>
-        <div className="md:w-1/2">
-          <HospitalList hospitals={mapResults} />
-          {isModalOpen && <AppointmentModal />}
-        </div>
+      <div className="">
+        <HospitalList hospitals={mapResults} />
+        {isModalOpen && <AppointmentModal />}
       </div>
     </div>
   );
