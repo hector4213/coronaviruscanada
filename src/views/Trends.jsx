@@ -17,7 +17,7 @@ const Trends = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="flex flex-col items-center py-7 px-4 md:flex-row md:items-start">
+    <div className="flex flex-col items-center py-7 px-4 md:flex-1 md:flex-row">
       <div className="w-full my-1 mx-1 md:w-1/2 md:mr-5">
         <CanadaStats />
         <VaccineChart />
