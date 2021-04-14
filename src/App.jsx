@@ -39,7 +39,7 @@ const App = () => {
     <div className="min-h-screen">
       <Router>
         <Nav />
-        <main>
+        <main className="md:flex">
           <Switch>
             <Route exact path="/">
               <Home />
