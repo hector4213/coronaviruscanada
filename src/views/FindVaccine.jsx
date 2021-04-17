@@ -24,7 +24,7 @@ const FindVaccine = () => {
       <h1 className="text-3xl col-span-full p-4 md:text-4xl font-medium">
         Click the map to find your location
       </h1>
-      <div className="flex items-center h-full z-30 bg-gray-400 p-2 mb-2 rounded-lg shadow-xl md:px-8">
+      <div className="flex items-center h-full z-30 bg-white p-2 mb-2 rounded-lg shadow-xl">
         {userLocation.length < 0 ? null : (
           <Map userLocation={userLocation} mapResults={mapResults} />
         )}
