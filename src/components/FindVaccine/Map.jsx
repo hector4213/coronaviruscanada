@@ -5,7 +5,7 @@ import UserMarker from './UserMarker';
 
 const Map = ({ userLocation, mapResults }) => {
   return (
-    <div className="h-96 flex-1">
+    <div className="h-96 flex-1 rounded-lg shadow-xl p-4 md:h-5/6">
       <MapContainer
         className="h-full w-full"
         center={userLocation}
