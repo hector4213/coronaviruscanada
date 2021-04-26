@@ -17,6 +17,7 @@ const fetchAppRegions = async (province) => {
   return regionData;
 };
 
+// User should have max of 2 appointments
 const checkMaxAppointments = async (userId) => {
   const db = firebase.firestore();
   const userRef = db.collection('users').doc(userId);
