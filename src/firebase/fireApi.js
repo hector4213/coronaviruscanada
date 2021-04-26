@@ -92,10 +92,12 @@ const updateDisplayName = async (id, newName) => {
   const userRef = firebase.firestore().collection('users').doc(id);
 
   const snapShot = await userRef.get();
+  const user = snapShot.data();
 
   if (snapShot.exists) {
     try {
       await userRef.set({
+        ...user,
         displayName: newName,
       });
     } catch (error) {
