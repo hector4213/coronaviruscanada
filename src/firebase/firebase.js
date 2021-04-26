@@ -34,6 +34,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       await userRef.set({
         displayName,
         email,
+        appts: 0,
         ...additionalData,
       });
     } catch (error) {
