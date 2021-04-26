@@ -28,12 +28,27 @@ const checkMaxAppointments = async (userId) => {
   }
 };
 
+const increaseAppointmentCount = async (userId) => {
+  const db = firebase.firestore();
+  const increment = firebase.firestore.FieldValue.increment(1);
+  const userRef = db.collection('users').doc(userId);
+  await userRef.update({ appts: increment });
+};
+
+const decreaseAppointmentCount = async (userId) => {
+  const db = firebase.firestore();
+  const decrement = firebase.firestore.FieldValue.increment(-1);
+  const userRef = db.collection('users').doc(userId);
+  await userRef.update({ appts: decrement });
+};
+
 const createAppointment = async (obj) => {
   const db = firebase.firestore();
 
   try {
     await checkMaxAppointments(obj.userId);
     await db.collection('appointments').add(obj);
+    await increaseAppointmentCount(obj.userId);
     console.log('success!');
   } catch (error) {
     console.log('something went wrong..', error);
@@ -63,6 +78,9 @@ const deleteAppointment = async (id) => {
   const appointment = db.collection('appointments').doc(`${id}`);
 
   try {
+    const deleteMe = await appointment.get();
+    const toBeDeleted = deleteMe.data();
+    await decreaseAppointmentCount(toBeDeleted.userId);
     await appointment.delete();
     return id;
   } catch (error) {
