@@ -17,10 +17,21 @@ const fetchAppRegions = async (province) => {
   return regionData;
 };
 
+const checkMaxAppointments = async (userId) => {
+  const db = firebase.firestore();
+  const userRef = db.collection('users').doc(userId);
+  const userData = await userRef.get();
+  const numAppointments = userData.data();
+  if (numAppointments.appts >= 2) {
+    throw new Error('You have reached the maximum of  appointments');
+  }
+};
+
 const createAppointment = async (obj) => {
   const db = firebase.firestore();
 
   try {
+    await checkMaxAppointments(obj.userId);
     await db.collection('appointments').add(obj);
     console.log('success!');
   } catch (error) {
