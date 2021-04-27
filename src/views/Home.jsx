@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="w-full h-full flex items-center justify-center p-1 md:p-4">
       <div className="flex flex-col bg-white dark:bg-gray-800 md:flex-row items-center justify-around">
-        <div className="text-start w-1/2  sm:px-6 lg:py-16 lg:px-8 z-20">
+        <div className="text-start z-20 w-1/2  sm:px-6 lg:py-16 lg:px-8 ">
           <h2 className="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
             <span className="block">View COVID-19 stats in Canada</span>
             <span className="block text-indigo-500">
