@@ -33,7 +33,7 @@ const Today = () => {
         <div className="container mt-4 mx-auto">
           <div className="md:grid md:grid-cols-2 lg:grid-cols-3">
             <Route exact path={`${path}`}>
-              <h1 className="text-3xl col-span-full text-center md:text-4xl font-medium mb-2 p-10">
+              <h1 className="text-3xl font-thin col-span-full text-center md:text-4xl  mb-2 p-10">
                 Select a province to view todays stats
               </h1>
               {provinceData.map((prov) => (

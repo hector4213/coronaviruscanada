@@ -10,7 +10,7 @@ const HospitalList = ({ hospitals }) => {
   return (
     <ul className="flex flex-col mx-auto w-full justify-center bg-white rounded-lg shadow-xl">
       <div className="flex flex-col mb-10 items-center justify-center w-full md:flex-row">
-        <h1 className="mx-4 text-center text-4xl font-medium p-4 text-blue-500">
+        <h1 className="mx-4 text-center text-4xl font-thin p-4 text-blue-500">
           Vaccination sites near you
         </h1>
         <div className="flex-shrink my-auto p-4">

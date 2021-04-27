@@ -28,7 +28,7 @@ const UserDashboard = () => {
     <div className="p-4 h-full">
       <div className="md:grid grid-cols-2 grid-rows-2 gap-4 h-full">
         <div className="flex flex-col justify-center items-center bg-white rounded-lg shadow-xl">
-          <h1 className="text-xl p-4 text-center md:text-4xl font-medium md:p-8 mb-2 block">
+          <h1 className="text-xl font-thin p-4 text-center md:text-4xl md:p-8 mb-2 block">
             Welcome {currentUser.displayName || currentUser.email}, its
           </h1>
           <span className="text-lg text-indigo-600">{humanDate()}</span>

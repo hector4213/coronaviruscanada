@@ -18,12 +18,13 @@ const FindVaccine = () => {
       dispatch(getLocalHospitals(userLocation));
     }
   }, [userLocation]);
+
   return (
     <div className="w-full flex flex-col">
-      <h1 className="text-2xl col-span-full p-4 md:text-4xl font-medium text-center">
+      <h1 className="text-2xl  p-4 md:text-4xl font-thin text-center">
         Click the map to find your location
       </h1>
-      <div className="w-full md:flex-row">
+      <div className="w-full rounded-lg shadow-2xl md:flex-row">
         <div className="bg-white p-2 mb-2 rounded-lg shadow-xl">
           {userLocation.length < 0 ? null : (
             <Map userLocation={userLocation} mapResults={mapResults} />
