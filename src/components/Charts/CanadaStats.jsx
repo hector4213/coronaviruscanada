@@ -11,13 +11,13 @@ const CanadaStats = () => {
       />
       <div className="px-4 py-5 sm:p-6">
         <dl>
-          <dt className="text-sm leading-5 font-medium text-gray-500 truncate">
+          <dt className="text-xl leading-5 font-thin text-gray-700 truncate">
             Population Of Canada
           </dt>
-          <dd className="mt-1 text-3xl leading-9 font-semibold text-gray-900">
-            37589262
+          <dd className="mt-1 text-3xl leading-9 font-light text-gray-900">
+            37,589,262
           </dd>
-          <dd className="text-gray-500 font-semibold">
+          <dd className="text-gray-800 font-light">
             <span>Last Updated: {apiLastUpdated}</span>
           </dd>
         </dl>

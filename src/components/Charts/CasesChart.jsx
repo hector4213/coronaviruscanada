@@ -56,7 +56,7 @@ const CasesChart = () => {
   return (
     <div className="w-full flex flex-col ">
       <div className="bg-white shadow-xl rounded-lg w-full text-center">
-        <h1 className="text-4xl p-5 text-gray-500">Select a date</h1>
+        <h1 className="text-4xl p-5 font-thin text-gray-800">Select a date</h1>
         <DatePicker />
       </div>
       <article className="h-96 w-full mt-3 p-7 bg-white shadow-xl rounded-lg">
