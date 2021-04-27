@@ -4,7 +4,7 @@ import AppointmentCard from './AppointmentCard';
 const Appointments = ({ appointments }) => {
   return (
     <div className="container w-full">
-      <h3 className="text-xl my-4 font-medium text-center">
+      <h3 className="text-xl my-4 font-thin text-center">
         You currently have {appointments.length} appointments
       </h3>
       <div className="flex flex-col items-center md:flex-row md:justify-around">
