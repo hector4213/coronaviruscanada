@@ -1,8 +1,25 @@
+ # Flatten the curve!
+ 
  <p align="center">
  <img src='/readme/illustration.png' width='370'>
  </p>
+ 
+## Disclaimer
 
-## A project to view coronavirus trends in Canada
+## Features
+
+## Data Visualization
+
+
+## Appointment Booking
+
+
+## User Dashboard
+
+
+## Geolocation of "vaccination sites"
+
+
 
 ## Technologies used
 
