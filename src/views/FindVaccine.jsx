@@ -18,20 +18,21 @@ const FindVaccine = () => {
       dispatch(getLocalHospitals(userLocation));
     }
   }, [userLocation]);
-
   return (
-    <div className="w-full p-4 md:grid grid-cols-2 gap-x-4">
-      <h1 className="text-3xl col-span-full p-4 md:text-4xl font-medium">
+    <div className="w-full flex flex-col">
+      <h1 className="text-2xl col-span-full p-4 md:text-4xl font-medium text-center">
         Click the map to find your location
       </h1>
-      <div className="flex items-center h-full z-30 bg-white p-2 mb-2 rounded-lg shadow-xl">
-        {userLocation.length < 0 ? null : (
-          <Map userLocation={userLocation} mapResults={mapResults} />
-        )}
-      </div>
-      <div className="">
-        <HospitalList hospitals={mapResults} />
-        {isModalOpen && <AppointmentModal />}
+      <div className="w-full md:flex-row">
+        <div className="bg-white p-2 mb-2 rounded-lg shadow-xl">
+          {userLocation.length < 0 ? null : (
+            <Map userLocation={userLocation} mapResults={mapResults} />
+          )}
+        </div>
+        <div className="w-full">
+          <HospitalList hospitals={mapResults} />
+          {isModalOpen && <AppointmentModal />}
+        </div>
       </div>
     </div>
   );
