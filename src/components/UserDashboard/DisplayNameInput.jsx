@@ -13,8 +13,8 @@ const DisplayNameInput = () => {
   };
 
   return (
-    <div className="flex flex-col">
-      <label htmlFor="display-name" className="text-gray-700 text-center  ">
+    <div className="flex flex-col mt-4">
+      <label htmlFor="display-name" className="text-gray-700 text-center ">
         Update your display name
         <input
           type="text"
