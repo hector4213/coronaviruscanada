@@ -36,10 +36,10 @@ const App = () => {
   }, [apiLastUpdated]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col max-w-screen">
       <Router>
         <Nav />
-        <main className="md:flex">
+        <main className="w-full">
           <Switch>
             <Route exact path="/">
               <Home />

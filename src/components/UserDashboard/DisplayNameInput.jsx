@@ -13,8 +13,8 @@ const DisplayNameInput = () => {
   };
 
   return (
-    <div className="relative">
-      <label htmlFor="display-name" className="text-gray-700">
+    <div className="flex flex-col">
+      <label htmlFor="display-name" className="text-gray-700 text-center  ">
         Update your display name
         <input
           type="text"
@@ -26,13 +26,15 @@ const DisplayNameInput = () => {
           onChange={(e) => setName(e.target.value)}
         />
       </label>
-      <button
-        className="py-2 px-4 mt-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg"
-        type="submit"
-        onClick={handleUpdate}
-      >
-        Update
-      </button>
+      <div className="mx-auto">
+        <button
+          className="py-2 px-4 mt-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg md:w-48"
+          type="submit"
+          onClick={handleUpdate}
+        >
+          Update
+        </button>
+      </div>
     </div>
   );
 };
