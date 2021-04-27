@@ -7,7 +7,7 @@ const Appointments = ({ appointments }) => {
       <h3 className="text-xl my-4 font-medium text-center">
         You currently have {appointments.length} appointments
       </h3>
-      <div className="flex flex-col items-center md:flex-row md:justify-center">
+      <div className="flex flex-col items-center md:flex-row md:justify-around">
         {appointments.map((appointment) => (
           <AppointmentCard key={appointment.id} appointment={appointment} />
         ))}
