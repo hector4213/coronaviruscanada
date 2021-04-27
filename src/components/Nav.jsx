@@ -10,7 +10,7 @@ const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
   const { currentUser } = useSelector((state) => state.user);
   const history = useHistory();
-  console.log(currentUser);
+
   return (
     <>
       <nav className="bg-white dark:bg-gray-800  shadow py-4 w-full ">
