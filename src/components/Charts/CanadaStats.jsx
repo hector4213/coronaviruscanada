@@ -7,7 +7,7 @@ const CanadaStats = () => {
     <div className="h-auto bg-white  overflow-hidden shadow rounded-lg w-full relative">
       <SiAircanada
         alt="canada logo"
-        className="h-24 w-24 rounded-full absolute opacity-50 -top-6 -right-6 md:-right-4"
+        className="h-24 w-24 rounded-full text-red-600 absolute -top-6 -right-6 md:-right-4"
       />
       <div className="px-4 py-5 sm:p-6">
         <dl>
