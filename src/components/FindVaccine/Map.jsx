@@ -5,12 +5,12 @@ import UserMarker from './UserMarker';
 
 const Map = ({ userLocation, mapResults }) => {
   return (
-    <div className="h-96 flex-1 rounded-lg z-10 shadow-xl p-4 md:h-5/6">
+    <div className="h-96 flex-1 p-4">
       <MapContainer
-        className="h-full w-full"
+        className="h-full w-full z-0"
         center={userLocation}
         zoom={11}
-        scrollWheelZoom
+        scrollWheelZoom={false}
       >
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">Mapbox</a> contributors'
