@@ -14,7 +14,7 @@ const AppointmentCard = ({ appointment }) => {
   return (
     <div
       key={id}
-      className="shadow-lg rounded-2xl w-80 p-4 mb-2 bg-white relative overflow-hidden md:mr-4"
+      className="shadow-lg rounded-2xl w-80 p-4 mb-2 bg-white relative overflow-hidden md:mr-4 md:h-52"
     >
       <GiHealthCapsule className="absolute -right-20 -bottom-8 h-40 w-40 mb-4" />
       <div className="w-4/6 h-full flex flex-col justify-around">
