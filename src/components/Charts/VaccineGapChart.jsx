@@ -16,12 +16,12 @@ const VaccineGapChart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!currentDate && apiLastUpdated) {
+    if (!currentDate) {
       dispatch(setInitDate(apiLastUpdated));
     } else {
       dispatch(getVaccineStats(currentDate));
     }
-  }, [currentDate]);
+  }, [apiLastUpdated, currentDate]);
 
   const onDateChange = (e) => {
     dispatch(setInitDate(e.target.value));
