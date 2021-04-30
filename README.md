@@ -1,5 +1,5 @@
- # Flatten the curve!
- 
+# Flatten the curve!
+
  <p align="center">
  <img src='/readme/illustration.png' width='370'>
  </p>
@@ -10,16 +10,17 @@
 
 ## Data Visualization
 
-
-## Appointment Booking
-
+|       Desktop View       |
+| :----------------------: |
+| ![](/readme/dataviz.gif) |
 
 ## User Dashboard
 
+## Geolocation of "vaccination sites" and appointment booking
 
-## Geolocation of "vaccination sites"
-
-
+|          Desktop View           |
+| :-----------------------------: |
+| ![](/readme/Geoappointment.gif) |
 
 ## Technologies used
 
