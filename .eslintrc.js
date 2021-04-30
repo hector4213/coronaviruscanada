@@ -8,6 +8,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    'import/no-named-as-default': ['off'],
     camelcase: ['off'],
     'jsx-a11y/href-no-hash': ['off'],
     'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
